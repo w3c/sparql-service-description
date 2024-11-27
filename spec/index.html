@@ -333,10 +333,6 @@ span.cancast:hover { background-color: #ffa;
   div.exampleWrapper { margin: 4px }
   div.exampleHeader { font-weight: bold;
                     margin: 4px}
-
-  em.rfc2119 { text-transform: lowercase;
-             font-variant: small-caps;
-             font-style: normal; }
     </style>
   </head>
   <body>
@@ -362,8 +358,10 @@ span.cancast:hover { background-color: #ffa;
       <p>A SPARQL service description lists the features of a SPARQL service made available via the [[[SPARQL12-QUERY]]]. This document describes both a method for discovering a service description from a specific SPARQL service and an RDF schema for encoding such descriptions in RDF.</p>
       <section id="terminology">
         <h3>Terminology</h3>
-        <p>When this document uses the words <em class="rfc2119" title="Keyword in RFC 2119 context">MUST</em>, <em class="rfc2119" title="Keyword in RFC 2119 context">SHOULD</em> and <em class=
-        "rfc2119" title="Keyword in RFC 2119 context">MAY</em>, and the words appear as emphasized text, they must be interpreted as described in [[RFC2119]].</p>
+        <p>When this document uses the words MUST, MUST NOT, SHOULD, SHOULD NOT,
+          and MAY, and the words appear as emphasized text, they must be
+          interpreted as described in [[RFC2119]].
+        </p>
         <p>The following terms are also in use throughout this document:</p>
         <dl>
           <dt>SPARQL Service</dt>
@@ -376,9 +374,9 @@ span.cancast:hover { background-color: #ffa;
     </section>
     <section id="accessing">
       <h2>Accessing a Service Description</h2>
-      <p>SPARQL services made available via the SPARQL Protocol <em class="rfc2119" title="Keyword in RFC 2119 context">SHOULD</em> return a service description document at the service endpoint when
-      dereferenced using the HTTP GET operation without any query parameter strings provided. This service description <em class="rfc2119" title="Keyword in RFC 2119 context">MUST</em> be made
-      available in an RDF serialization, <em class="rfc2119" title="Keyword in RFC 2119 context">MAY</em> be embedded in (X)HTML by way of [[[RDFa-core]]], and <em class="rfc2119" title="Keyword in RFC 2119 context">SHOULD</em> use <a data-cite="rfc9110#content.negotiation">content negotiation</a> if available in other RDF representations.</p>
+      <p>SPARQL services made available via the SPARQL Protocol SHOULD return a service description document at the service endpoint when
+      dereferenced using the HTTP GET operation without any query parameter strings provided. This service description MUST be made
+      available in an RDF serialization, MAY be embedded in (X)HTML by way of [[[RDFa-core]]], and SHOULD use <a data-cite="rfc9110#content.negotiation">content negotiation</a> if available in other RDF representations.</p>
     </section>
     <section id="vocab">
       <h2>Service Description Vocabulary</h2>
@@ -654,8 +652,7 @@ span.cancast:hover { background-color: #ffa;
           <p>Relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a format that is supported for serializing query results.</p>
           <p>URIs for commonly used serialization formats are defined by <a class="inform" href="http://www.w3.org/ns/formats/">Unique URIs for File Formats</a>. For formats that do not have an
           existing URI, the <code>&lt;<a href="http://www.w3.org/ns/formats/media_type">http://www.w3.org/ns/formats/media_type</a>&gt;</code> and <code>&lt;<a href=
-          "http://www.w3.org/ns/formats/preferred_suffix">http://www.w3.org/ns/formats/preferred_suffix</a>&gt;</code> properties defined in that document <em class="rfc2119" title=
-          "Keyword in RFC 2119 context">SHOULD</em> be used to describe the format.</p>
+          "http://www.w3.org/ns/formats/preferred_suffix">http://www.w3.org/ns/formats/preferred_suffix</a>&gt;</code> properties defined in that document SHOULD be used to describe the format.</p>
           <table>
             <tbody>
               <tr>
@@ -676,8 +673,7 @@ span.cancast:hover { background-color: #ffa;
           "#sd-dereferencesuris">sd:DereferencesURIs</a> below).</p>
           <p>URIs for commonly used serialization formats are defined by <a class="inform" href="http://www.w3.org/ns/formats/">Unique URIs for File Formats</a>. For formats that do not have an
           existing URI, the <code>&lt;<a href="http://www.w3.org/ns/formats/media_type">http://www.w3.org/ns/formats/media_type</a>&gt;</code> and <code>&lt;<a href=
-          "http://www.w3.org/ns/formats/preferred_suffix">http://www.w3.org/ns/formats/preferred_suffix</a>&gt;</code> properties defined in that document <em class="rfc2119" title=
-          "Keyword in RFC 2119 context">SHOULD</em> be used to describe the format.</p>
+          "http://www.w3.org/ns/formats/preferred_suffix">http://www.w3.org/ns/formats/preferred_suffix</a>&gt;</code> properties defined in that document SHOULD be used to describe the format.</p>
           <table>
             <tbody>
               <tr>
@@ -710,8 +706,8 @@ span.cancast:hover { background-color: #ffa;
         <section id="sd-namedGraph">
           <h4>sd:namedGraph</h4>
           <p>Relates an instance of <a href="#sd-GraphCollection"><code>sd:GraphCollection</code></a> (or its subclass <a href="#sd-Dataset"><code>sd:Dataset</code></a>) to the description of one of
-          its named graphs. The description of such a named graph <em class="rfc2119" title="Keyword in RFC 2119 context">MUST</em> include the <a href="#sd-name"><code>sd:name</code></a> property
-          and <em class="rfc2119" title="Keyword in RFC 2119 context">MAY</em> include the <a href="#sd-graph"><code>sd:graph</code></a> property.</p>
+          its named graphs. The description of such a named graph MUST include the <a href="#sd-name"><code>sd:name</code></a> property
+          and MAY include the <a href="#sd-graph"><code>sd:graph</code></a> property.</p>
           <table>
             <tbody>
               <tr>
@@ -859,8 +855,7 @@ span.cancast:hover { background-color: #ffa;
         </section>
         <section id="sd-EntailmentProfile">
           <h4>sd:EntailmentProfile</h4>
-          <p>An instance of <a href="#sd-EntailmentProfile"><code>sd:EntailmentProfile</code></a> represents a profile of an entailment regime. An entailment profile <em class="rfc2119" title=
-          "Keyword in RFC 2119 context">MAY</em> impose restrictions on what constitutes valid RDF with respect to entailment. URIs for commonly used entailment profiles are defined by <a href=
+          <p>An instance of <a href="#sd-EntailmentProfile"><code>sd:EntailmentProfile</code></a> represents a profile of an entailment regime. An entailment profile MAY impose restrictions on what constitutes valid RDF with respect to entailment. URIs for commonly used entailment profiles are defined by <a href=
           "http://www.w3.org/ns/owl-profile/">Unique URIs for OWL 2 Profiles</a>.</p>
           <table>
             <tbody>
@@ -878,7 +873,7 @@ span.cancast:hover { background-color: #ffa;
         <section id="sd-GraphCollection">
           <h4>sd:GraphCollection</h4>
           <p>An instance of <a href="#sd-GraphCollection"><code>sd:GraphCollection</code></a> represents a collection of zero or more named graph descriptions. Each named graph description belonging
-          to an <a href="#sd-GraphCollection"><code>sd:GraphCollection</code></a> <em class="rfc2119" title="Keyword in RFC 2119 context">MUST</em> be linked with the <a href=
+          to an <a href="#sd-GraphCollection"><code>sd:GraphCollection</code></a> MUST be linked with the <a href=
           "#sd-namedGraph"><code>sd:namedGraph</code></a> predicate.</p>
           <table>
             <tbody>
@@ -893,7 +888,7 @@ span.cancast:hover { background-color: #ffa;
           <h4>sd:Dataset</h4>
           <p>An instance of <a href="#sd-Dataset"><code>sd:Dataset</code></a> represents a <a data-cite="SPARQL12-QUERY#rdfDataset">RDF Dataset</a> comprised of a default graph and
           zero or more named graphs.</p>
-          <p>The default graph of an <a href="#sd-Dataset"><code>sd:Dataset</code></a> <em class="rfc2119" title="Keyword in RFC 2119 context">MUST</em> be linked with the <a href=
+          <p>The default graph of an <a href="#sd-Dataset"><code>sd:Dataset</code></a> MUST be linked with the <a href=
           "#sd-defaultGraph"><code>sd:defaultGraph</code></a> predicate.</p>
           <table>
             <tbody>
@@ -1043,7 +1038,7 @@ span.cancast:hover { background-color: #ffa;
         <section id="sd-emptygraphs">
           <h4>sd:EmptyGraphs</h4>
           <p><code>sd:EmptyGraphs</code>, when used as the object of the <a href="#sd-feature">sd:feature</a> property, indicates that the underlying graph store supports empty graphs. A graph store
-          that supports empty graphs <em class="rfc2119" title="Keyword in RFC 2119 context">MUST NOT</em> remove graphs that are left empty after triples are removed from them. (See <a data-cite=
+          that supports empty graphs MUST NOT remove graphs that are left empty after triples are removed from them. (See <a data-cite=
           "SPARQL12-UPDATE#graphUpdate">3.1 Graph Update in SPARQL 1.2 Update</a>.)</p>
           <table>
             <tbody>
@@ -1199,13 +1194,13 @@ PREFIX void: &lt;http://rdfs.org/ns/void#&gt;
       <h2>Conformance</h2>
       <p>A SPARQL service conformant with this specification:</p>
       <ol>
-        <li><em class="rfc2119" title="Keyword in RFC 2119 context">MUST</em> return RDF content when the service endpoint URL is accessed as described in section <a href="#accessing">2 Accessing a
+        <li>MUST return RDF content when the service endpoint URL is accessed as described in section <a href="#accessing">2 Accessing a
         Service Description</a>.</li>
-        <li>The RDF content returned from dereferencing a service endpoint URL <code>&lt;service-endpoint-URL&gt;</code> <em class="rfc2119" title="Keyword in RFC 2119 context">MUST</em> include at
+        <li>The RDF content returned from dereferencing a service endpoint URL <code>&lt;service-endpoint-URL&gt;</code> MUST include at
         least one triple matching:
           <pre>?service sd:endpoint &lt;service-endpoint-URL&gt; .</pre>
         </li>
-        <li>The RDF content returned <em class="rfc2119" title="Keyword in RFC 2119 context">MUST</em> make use of the vocabulary defined in this document in accordance with the usage specified in
+        <li>The RDF content returned MUST make use of the vocabulary defined in this document in accordance with the usage specified in
         section <a href="#vocab">3 Service Description Vocabulary</a>.</li>
       </ol>
     </section>
