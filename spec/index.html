@@ -1091,11 +1091,11 @@ span.cancast:hover { background-color: #ffa;
       <section id="example-rdfxml">
         <h3>RDF/XML Service Description</h3>
         <p>Given the HTTP request:</p>
-        <pre>GET /sparql/ HTTP/1.1
+        <pre class="box http">GET /sparql/ HTTP/1.1
 Host: www.example
 </pre>
         <p>the SPARQL service responds with an RDF/XML encoded service description (no content negotiation or RDFa encoding is used):</p>
-        <pre>HTTP/1.1 200 OK
+        <pre class="box http xml">HTTP/1.1 200 OK
 Date: Fri, 09 Oct 2009 17:31:12 GMT
 Server: Apache/1.3.29 (Unix) PHP/4.3.4 DAV/1.0.3
 Connection: close
@@ -1145,12 +1145,12 @@ Content-Type: application/rdf+xml
       <section id="example-turtle">
         <h3>Turtle Service Description</h3>
         <p>Given the HTTP request:</p>
-        <pre>GET /sparql/ HTTP/1.1
+        <pre class="box http">GET /sparql/ HTTP/1.1
 Host: www.example
 Accept: text/turtle
 </pre>
         <p>the SPARQL service responds with a <a data-cite="RDF12-TURTLE#">Turtle</a> encoded service description:</p>
-        <pre>HTTP/1.1 200 OK
+        <pre class="box http">HTTP/1.1 200 OK
 Date: Fri, 09 Oct 2009 17:31:12 GMT
 Server: Apache/1.3.29 (Unix) PHP/4.3.4 DAV/1.0.3
 Connection: close
@@ -1198,7 +1198,7 @@ PREFIX void: &lt;http://rdfs.org/ns/void#&gt;
         Service Description</a>.</li>
         <li>The RDF content returned from dereferencing a service endpoint URL <code>&lt;service-endpoint-URL&gt;</code> MUST include at
         least one triple matching:
-          <pre>?service sd:endpoint &lt;service-endpoint-URL&gt; .</pre>
+          <pre class="box">?service sd:endpoint &lt;service-endpoint-URL&gt; .</pre>
         </li>
         <li>The RDF content returned MUST make use of the vocabulary defined in this document in accordance with the usage specified in
         section <a href="#vocab">3 Service Description Vocabulary</a>.</li>
