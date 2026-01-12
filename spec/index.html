@@ -588,6 +588,29 @@ span.cancast:hover { background-color: #ffa;
             </tbody>
           </table>
         </section>
+        <section id="sd-supportedVersion">
+          <h4>sd:supportedVersion</h4>
+          <p>Relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a SPARQL language version that it supports.</p>
+          <p>
+              This property is related to the <code>sd:supportedLanguage</code> property, as specific languages may support different versions.
+              For example, when the language <code>sd:SPARQL12Query</code> is supported, possible supported versions are <a href="http://www.w3.org/ns/sparql#version-1.2"><code>sparql:version-1.2</code></a> and <a href="http://www.w3.org/ns/sparql#version-1.2-basic"><code>sparql:version-1.2-basic</code></a>.</p>
+          <table>
+            <tbody>
+              <tr>
+                <th>subPropertyOf:</th>
+                <td><a href="#sd-feature"><code>sd:feature</code></a></td>
+              </tr>
+              <tr>
+                <th>domain:</th>
+                <td><a href="#sd-Service"><code>sd:Service</code></a></td>
+              </tr>
+              <tr>
+                <th>range:</th>
+                <td><code>rdfs:Resource</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
         <section id="sd-propertyFeature">
           <h4>sd:propertyFeature</h4>
           <p>Relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a resource representing an implemented feature that extends the SPARQL Query or Update language and that is
@@ -973,6 +996,7 @@ span.cancast:hover { background-color: #ffa;
         <section id="lang-sparql12query">
           <h4>sd:SPARQL12Query</h4>
           <p><code>sd:SPARQL12Query</code> is an <a href="#sd-Language"><code>sd:Language</code></a> representing the [[[SPARQL12-QUERY]]].</p>
+          <p>Relevant <a href="#sd-supportedVersion">supported versions</a> are <a href="http://www.w3.org/ns/sparql#version-1.2"><code>sparql:version-1.2</code></a> and <a href="http://www.w3.org/ns/sparql#version-1.2-basic"><code>sparql:version-1.2-basic</code></a>.</p>
           <table>
             <tbody>
               <tr>
@@ -985,6 +1009,7 @@ span.cancast:hover { background-color: #ffa;
         <section id="lang-sparql12update">
           <h4>sd:SPARQL12Update</h4>
           <p><code>sd:SPARQL12Update</code> is an <a href="#sd-Language"><code>sd:Language</code></a> representing the [[[SPARQL12-UPDATE]]] language.</p>
+          <p>Relevant <a href="#sd-supportedVersion">supported versions</a> are <code>sparql:version-1.2</code> and <code>sparql:version-1.2-basic</code>.</p>
           <table>
             <tbody>
               <tr>
