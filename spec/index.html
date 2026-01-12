@@ -1135,7 +1135,9 @@ Content-Type: application/rdf+xml
    xmlns:void="http://rdfs.org/ns/void#"&gt;
   &lt;sd:Service&gt;
     &lt;sd:endpoint rdf:resource="http://www.example/sparql/"/&gt;
-    &lt;sd:supportedLanguage rdf:resource="http://www.w3.org/ns/sparql-service-description#SPARQL11Query"/&gt;
+    &lt;sd:supportedLanguage rdf:resource="http://www.w3.org/ns/sparql-service-description#SPARQL12Query"/&gt;
+    &lt;sd:supportedVersion rdf:resource="http://www.w3.org/ns/sparql#version-1.2"/&gt;
+    &lt;sd:supportedVersion rdf:resource="http://www.w3.org/ns/sparql#version-1.2-basic"/&gt;
     &lt;sd:resultFormat rdf:resource="http://www.w3.org/ns/formats/RDF_XML"/&gt;
     &lt;sd:resultFormat rdf:resource="http://www.w3.org/ns/formats/Turtle"/&gt;
     &lt;sd:feature rdf:resource="http://www.w3.org/ns/sparql-service-description#DereferencesURIs"/&gt;
@@ -1186,10 +1188,12 @@ PREFIX sd: &lt;http://www.w3.org/ns/sparql-service-description#&gt;
 PREFIX ent: &lt;http://www.w3.org/ns/entailment/&gt;
 PREFIX prof: &lt;http://www.w3.org/ns/owl-profile/&gt;
 PREFIX void: &lt;http://rdfs.org/ns/void#&gt;
+PREFIX sparql: &lt;http://www.w3.org/ns/sparql#&gt;
 
 [] a sd:Service ;
     sd:endpoint &lt;http://www.example/sparql/&gt; ;
-    sd:supportedLanguage sd:SPARQL11Query ;
+    sd:supportedLanguage sd:SPARQL12Query ;
+    sd:supportedVersion sparql:version-1.2, sparql:version-1.2-basic ;
     sd:resultFormat &lt;http://www.w3.org/ns/formats/RDF_XML&gt;, &lt;http://www.w3.org/ns/formats/Turtle&gt; ;
     sd:extensionFunction &lt;http://example.org/Distance&gt; ;
     sd:feature sd:DereferencesURIs ;
