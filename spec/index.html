@@ -588,6 +588,29 @@ span.cancast:hover { background-color: #ffa;
             </tbody>
           </table>
         </section>
+        <section id="sd-supportedVersion">
+          <h4>sd:supportedVersion</h4>
+          <p>Relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a SPARQL language version that it supports.</p>
+          <p>
+              This property is related to the <code>sd:supportedLanguage</code> property, as the combination of language and version will indicate a specific feature set supported by the service.
+              For example, when a service description indicates support for the <code>sd:SPARQLQuery</code> language and <a href="http://www.w3.org/ns/sparql#version-1.2-basic"><code>sparql:version-1.2-basic</code></a> version, support for SPARQL 1.2 Query [[SPARQL12-QUERY]] with <a data-cite="RDF12-CONCEPTS#dfn-basic">RDF 1.2 Basic conformance</a> is indicated.</p>
+          <table>
+            <tbody>
+              <tr>
+                <th>subPropertyOf:</th>
+                <td><a href="#sd-feature"><code>sd:feature</code></a></td>
+              </tr>
+              <tr>
+                <th>domain:</th>
+                <td><a href="#sd-Service"><code>sd:Service</code></a></td>
+              </tr>
+              <tr>
+                <th>range:</th>
+                <td><code>rdfs:Resource</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
         <section id="sd-propertyFeature">
           <h4>sd:propertyFeature</h4>
           <p>Relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a resource representing an implemented feature that extends the SPARQL Query or Update language and that is
@@ -782,10 +805,21 @@ span.cancast:hover { background-color: #ffa;
         </section>
         <section id="sd-Language">
           <h4>sd:Language</h4>
-          <p>An instance of <a href="#sd-Language"><code>sd:Language</code></a> represents one of the SPARQL languages, including specific configurations providing particular features or extensions.
+          <p>
+          An instance of <a href="#sd-Language"><code>sd:Language</code></a> represents one of the SPARQL languages (Query or Update).
+          The combination of a <code>sd:Language</code> with a version indicates a specific service configuration providing particular features or extensions.
+          </p>
+          
+          <p class="note">
+          The previous version of this specification [[SPARQL11-SERVICE-DESCRIPTION]] defined <code>sd:Language</code></a> as indicating both a language <em>and a version</em>.
+          This has been changed so that <code>sd:Language</code></a> now only represents languages. A service's supported versions of the language is now specified using the <a href="#sd-supportedVersion"><code>sd:supportedVersion</code></a> property.
+          The previously-defined <code>sd:Language</code> <a href="#instances">instances</a> which include a version number are preserved below for backwards compatibility.
+          </p>
+          
           This document defines five instances of <a href="#sd-Language"><code>sd:Language</code></a>: <a href="#lang-sparql10query"><code>sd:SPARQL10Query</code></a>, <a href=
           "#lang-sparql11query"><code>sd:SPARQL11Query</code></a>, <a href="#lang-sparql11update"><code>sd:SPARQL11Update</code></a>, <a href=
-          "#lang-sparql12query"><code>sd:SPARQL12Query</code></a>, and <a href="#lang-sparql12update"><code>sd:SPARQL12Update</code></a>.</p>
+          "#lang-sparqlquery"><code>sd:SPARQLQuery</code></a>, and <a href="#lang-sparqlupdate"><code>sd:SPARQLUpdate</code></a>.</p>
+
           <table>
             <tbody>
               <tr>
@@ -970,9 +1004,16 @@ span.cancast:hover { background-color: #ffa;
             </tbody>
           </table>
         </section>
-        <section id="lang-sparql12query">
-          <h4>sd:SPARQL12Query</h4>
-          <p><code>sd:SPARQL12Query</code> is an <a href="#sd-Language"><code>sd:Language</code></a> representing the [[[SPARQL12-QUERY]]].</p>
+        <section id="lang-sparqlquery">
+          <h4>sd:SPARQLQuery</h4>
+          <p><code>sd:SPARQLQuery</code> is an <a href="#sd-Language"><code>sd:Language</code></a> representing the SPARQL Query language [[[SPARQL12-QUERY]]].</p>
+          <p>Relevant <a href="#sd-supportedVersion">supported versions</a> are:</p>
+          <ul>
+            <li><code>sparql:version-1.2</code></li>
+            <li><code>sparql:version-1.2-basic</code></li>
+            <li><code>sparql:version-1.1</code></li>
+            <li><code>sparql:version-1.0</code></li>
+          </ul>
           <table>
             <tbody>
               <tr>
@@ -982,9 +1023,16 @@ span.cancast:hover { background-color: #ffa;
             </tbody>
           </table>
         </section>
-        <section id="lang-sparql12update">
-          <h4>sd:SPARQL12Update</h4>
-          <p><code>sd:SPARQL12Update</code> is an <a href="#sd-Language"><code>sd:Language</code></a> representing the [[[SPARQL12-UPDATE]]] language.</p>
+        <section id="lang-sparqlupdate">
+          <h4>sd:SPARQLUpdate</h4>
+          <p><code>sd:SPARQLUpdate</code> is an <a href="#sd-Language"><code>sd:Language</code></a> representing the SPARQL Update langauge [[[SPARQL12-UPDATE]]] language.</p>
+          <p>Relevant <a href="#sd-supportedVersion">supported versions</a> are:</p>
+          <ul>
+            <li><code>sparql:version-1.2</code></li>
+            <li><code>sparql:version-1.2-basic</code></li>
+            <li><code>sparql:version-1.1</code></li>
+            <li><code>sparql:version-1.0</code></li>
+          </ul>
           <table>
             <tbody>
               <tr>
@@ -1110,7 +1158,9 @@ Content-Type: application/rdf+xml
    xmlns:void="http://rdfs.org/ns/void#"&gt;
   &lt;sd:Service&gt;
     &lt;sd:endpoint rdf:resource="http://www.example/sparql/"/&gt;
-    &lt;sd:supportedLanguage rdf:resource="http://www.w3.org/ns/sparql-service-description#SPARQL11Query"/&gt;
+    &lt;sd:supportedLanguage rdf:resource="http://www.w3.org/ns/sparql-service-description#SPARQLQuery"/&gt;
+    &lt;sd:supportedVersion rdf:resource="http://www.w3.org/ns/sparql#version-1.2"/&gt;
+    &lt;sd:supportedVersion rdf:resource="http://www.w3.org/ns/sparql#version-1.2-basic"/&gt;
     &lt;sd:resultFormat rdf:resource="http://www.w3.org/ns/formats/RDF_XML"/&gt;
     &lt;sd:resultFormat rdf:resource="http://www.w3.org/ns/formats/Turtle"/&gt;
     &lt;sd:feature rdf:resource="http://www.w3.org/ns/sparql-service-description#DereferencesURIs"/&gt;
@@ -1161,10 +1211,12 @@ PREFIX sd: &lt;http://www.w3.org/ns/sparql-service-description#&gt;
 PREFIX ent: &lt;http://www.w3.org/ns/entailment/&gt;
 PREFIX prof: &lt;http://www.w3.org/ns/owl-profile/&gt;
 PREFIX void: &lt;http://rdfs.org/ns/void#&gt;
+PREFIX sparql: &lt;http://www.w3.org/ns/sparql#&gt;
 
 [] a sd:Service ;
     sd:endpoint &lt;http://www.example/sparql/&gt; ;
-    sd:supportedLanguage sd:SPARQL11Query ;
+    sd:supportedLanguage sd:SPARQLQuery ;
+    sd:supportedVersion sparql:version-1.2, sparql:version-1.2-basic ;
     sd:resultFormat &lt;http://www.w3.org/ns/formats/RDF_XML&gt;, &lt;http://www.w3.org/ns/formats/Turtle&gt; ;
     sd:extensionFunction &lt;http://example.org/Distance&gt; ;
     sd:feature sd:DereferencesURIs ;
@@ -1209,6 +1261,7 @@ PREFIX void: &lt;http://rdfs.org/ns/void#&gt;
     <section id="changes-1-1" class="appendix informative">
       <h2>Changes between SPARQL 1.1 Service Description and SPARQL 1.2 Service Description</h2>
       <ul>
+        <li>sd:Language and sd:supportedLanguage updated to only differentiate Query and Update, leaving language versioning to the new sd:supportedVersion.</li>
         <li>Update fragment identifiers for references to RFC9110 in <a href="#accessing" class="sectionRef"></a></li>
         <li>Use PREFIX instead of @prefix in all Turtle examples</li>
       </ul>
