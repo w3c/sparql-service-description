@@ -59,6 +59,23 @@
       @media (max-width: 767px) {
           table { word-break: normal; overflow-wrap: anywhere; padding: 0.2em 0.5em }
       }
+
+        dl.terms dt {
+            float: left;
+            clear: left;
+            width: 10vw;
+        }
+
+        dl.terms dd {
+            margin-left: 15vw;
+        }
+
+        dl.terms dd:after {
+            content: '';
+            display: block;
+            clear: both;
+            margin-bottom: 5px;
+        }
     </style>
   </head>
   <body>
@@ -96,39 +113,26 @@
           <dt>SPARQL endpoint</dt>
           <dd>The URI at which a SPARQL Service listens for requests from clients.</dd>
         </dl>
-        <p>The following namespace prefixes, shown with their corresponding IRIs, are used in this document:</p>
-        <table id="tab-vocab-ns" class="simple">
-          <caption>Namespace prefixes and IRIs used in this document</caption>
-          <tbody>
-          <tr>
-            <th>Namespace prefix</th>
-            <th>Namespace <abbr title="Internationalized Resource Identifier">IRI</abbr></th>
-          </tr>
-          <tr>
-            <td>format</td>
-            <td><a href="http://www.w3.org/ns/formats/"><code>http://www.w3.org/2001/XMLSchema#</code></a></td>
-          </tr>
-          <tr>
-            <td>owl</td>
-            <td><a href="http://www.w3.org/2002/07/owl#"><code>http://www.w3.org/2002/07/owl#</code></a></td>
-          </tr>
-          <tr>
-            <td>rdfs</td>
-            <td><a href="https://www.w3.org/2000/01/rdf-schema#"><code>http://www.w3.org/2000/01/rdf-schema#</code></a></td>
-          </tr>
-          <tr>
-            <td>sd</td>
-            <td><a href="http://www.w3.org/ns/sparql-service-description#"><code>http://www.w3.org/ns/sparql-service-description#</code></a></td>
-          </tr>
-          <tr>
-            <td>sparql</td>
-            <td><a href="http://www.w3.org/ns/sparql#"><code>http://www.w3.org/ns/sparql#</code></a></td>
-          </tr>
-          </tbody>
-        </table>
       </section>
     </section>
-    <section id="accessing">
+    <section id="namespaces">
+      <h3>Namespaces</h3>
+      <p>This specification makes use of the following namespaces:</p>
+
+      <dl class="terms" id="namespaces">
+            <dt><code>format</code></dt>
+            <dd><code>http://www.w3.org/ns/formats/</code></dd>
+            <dt><code>owl</code></dt>
+            <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+            <dt><code>rdfs</code></dt>
+            <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+            <dt><code>sd</code></dt>
+            <dd><code>http://www.w3.org/ns/sparql-service-description#</code></dd>
+            <dt><code>sparql</code></dt>
+            <dd><code>http://www.w3.org/ns/sparql#</code></dd>
+        </dl>
+    </section>
+  <section id="accessing">
       <h2>Accessing a Service Description</h2>
       <p>SPARQL services made available via the SPARQL Protocol SHOULD return a service description document at the service endpoint when
       dereferenced using the HTTP GET operation without any query parameter strings provided. This service description MUST be made
