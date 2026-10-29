@@ -45,294 +45,37 @@
     </script>
 
     <style>
-      /* @import url("local.css"); */
-      /* Inlined to make preview work */
+      figure { text-align: center; }
+      table { border-collapse: collapse; }
+      table, td, th { border: 1px solid black; }
+      caption { font-weight: bold; text-align: left ; }
+      code { color: #ff4500; }  /* Old W3C Style */
+      @media (min-width: 851px) {
+          table th, table td { padding: 5px;}
+      } 
+      @media (max-width: 850px) {
+          table th, table td { font-size: 12px; padding: 3px 4px;}
+      } 
+      @media (max-width: 767px) {
+          table { word-break: normal; overflow-wrap: anywhere; padding: 0.2em 0.5em }
+      }
 
-/* CSS For SPARQL Query */
+        dl.terms dt {
+            float: left;
+            clear: left;
+            width: 10vw;
+        }
 
-/* In-progress working draft artifacts - to be removed eventually */
-  .issue	{ background-color: #fdd;
-                  font-size: 88% ; }
-  .add		{ background-color: #7fff7f }
-  .remove	{ background-color: #ff7f7f }
-ul.issue	{}
-  .issueBlock	{ margin: 1em 4em 1em 2.5em ; /* Top Right Bottom Left */
-                  padding: 1ex;
-	          /*overflow: auto;*/
-                  page-break-inside: avoid ; }
-  .issueTopic	{ font-weight: bold ; }
+        dl.terms dd {
+            margin-left: 15vw;
+        }
 
- .todo		{ font-size: 80% ; color: #444 ; }
-p.todo		{}
-
-.wgNote	{ border: 0.2em solid red;
-      padding: 0.5em ;
-      margin: 1em 4em 1em 2em ; }
-
-.box     { border: thin solid #888888;
-           page-break-inside: avoid ;
-           background-color: #F8F8F8 ; padding:1em ;
-           margin-left:0 ; margin-right: 2ex; 
-           margin-top: 0.1ex ; margin-bottom: 0.1ex ;
-         }
-
-/* Misc WD stuff */
-span.cvs-id     {color: gray; font-size:80%; display: block; }
-
-/* == General Tag Treatment == */
-pre		 { margin: 1em 4em 1em 2.5em ; /* Top Right Bottom Left */
-                   padding: 1ex;
-	           /*overflow: auto;*/
-                   page-break-inside: avoid ; }
-
-/* Tables */
-table, td	{ text-align: left; }
-td, th   { border-style: solid;
-                  border-width: 1px;
-                  border-color: black;
-                  border-bottom-color: gray;
-                  border-right-color: gray; }
-td.annotation, th.annotation { border-style: none; border-bottom-style: dotted; }
-table.plain	{ border-spacing: 0px; padding: 0px ; border-collapse: collapse ; }
-                  /* cellpadding="0" cellspacing="1" style="border-collapse: collapse */
-
-
-th.major	{ background-color: #005a9c;
-                  color: white; }
-.subHeading	{ text-align: left;
-                  background-color: #CCCCCC; }
-th, td		{ padding: 3px; }
-td		{ font-size: 85%; }
-th a:link	{ text-decoration: none; }
-th a:hover	{ background-color:#FFFF99;
-                  text-decoration: underline; }
-
-/* == Prototypes == */
-pre.prototype	{ background-color:#f7f8ff;
-                  border:thin solid #8888aa;
-                  margin: 1em 4em 1em 0em ; }
-.return, .type	{ color: #177 }
-
-/* Definitions */
-.defn		{ margin-left:0 ; margin-right: 2ex; 
-                  margin-top: 0.1ex ; margin-bottom: 0.1ex ;
-                  /*border: double 1px #888888; *//* Buggy */
-                  border: thin solid #888888;
-                  padding: 1ex 2ex 0.5ex 2ex ; /* top, right, bottom, left */
-                  page-break-inside: avoid ;
-                  background-color: #F0F8F8 ; }
-div.defn p	{ margin-top: 1ex ; margin-bottom: 1.5ex ;}
-div.defn ul	{ margin-top: 1ex ; margin-bottom: 1.5ex ; }
-@media print	{ .defn { margin: 1em 1em 1em 1em ; } }
-span.definedTerm	{font-weight: bold;}
-
-div.grammarExtract
-                { border: thin solid #888888;
-                  padding: 1ex 2ex 1ex 2ex ; /* top, right, bottom, left */
-                  margin: 1em 6em 1em 2em ; 
-                  page-break-inside: avoid ;
-                  background-color: #F8F8F8 ; }
-
-pre.codeBlock  { font-family:monospace ; page-break-inside: avoid ; 
-                 margin: 0 ;
-	         margin-right: 2ex ;
-                 border: thin solid #888888; }
-
-
-
-
-/* Examples */
-pre.data	{ border: thin solid #88AA88;
-                  background-color: #E8F0E8;
-                  margin: 1em 4em 1em 0em ; }
-
-pre.dataExcerpt	{ border: thin solid #88AA88;
-                  background-color: #E8F0E8;
-                  margin: 1em 4em 1em 0em ; }
-/* Example Queries */
-.query          { background-color:#f7f8ff; }
-.queryExcerpt   { background-color:#f7f8ff; }
-pre.query	{ border:thin solid #8888aa;
-                  margin: 1em 4em 1em 0em ; }
-/* Example Results */
-.result		{ border: thin solid  #888888 ;
-                  background-color: #F0F0F0 ; }
-pre.resultGraph	{  margin: 0em 0em 0em 0em ; /* Top Right Bottom Left */
-                   padding: 0ex;
-                   font-size: 100% ;
-                   page-break-inside: avoid ; }
-pre.resultSet	{  margin: 0em 0em 0em 0em ; /* Top Right Bottom Left */
-                   padding: 0ex;
-                   font-size: 100% ;
-                   page-break-inside: avoid ; }
-pre.resultAsk	{  margin: 0em 0em 0em 0em ; /* Top Right Bottom Left */
-                   padding: 0ex;
-                   font-size: 100% ;
-                   page-break-inside: avoid ; }
-pre.resultTurtle{  margin: 0em 0em 0em 0em ; /* Top Right Bottom Left */
-                   padding: 0ex;
-                   font-size: 100% ;
-                   page-break-inside: avoid ; }
-
-pre.result	{ margin: 1em 4em 1em 0em ; }
-
-div.result	{ font-family: monospace;
-                  margin:  1em 4em 1em 0em ;
-                  padding: 1ex ; }
-
-.result table	{ border-collapse: collapse; }
-.result table td{ border-width: 1px ;
-                  border-color : black ; 
-                  font-family: monospace ;
-                  empty-cells: show;
-                  padding-left: 1ex ; padding-right: 1ex ;
-                  vertical-align:top;
-                  text-align: left ; } 
-/*  spacing: 0 ;*/
-.result table th{ border-width: 1px ;
-                  font-family: monospace ;
-                  border-color: black ;
-                  empty-cells: show;
-                  padding-left: 1ex ; padding-right: 1ex ;
-                  vertical-align:top;
-                  text-align:center; } 
-
-/* Examples : Algebra */
-div.algExample {  border: thin solid #888888;
-                  page-break-inside: avoid ;
-                  padding:0.5em ; margin:0.5em ;
-                  margin-left: 2em ; margin-right: 2em ;
-                  font-family:monospace ; }
-
-div.algExample1 { padding:0.5em ; background-color: #F0F0FF ; }
-div.algExample2 { padding:0.5em ; margin-top: 0.5em ; background-color: #F0FFF0 ; }
-
-/* Grammar Mark-up */
-.operator	{ color: #3f3f5f;
-                  text-transform: uppercase; }
-.function	{ color: #3f3f5f;
-                }
-
-/* Tuned to cope with different browsers behaviours */
-div.grammarTable table	{ border-style: solid ;
-			  border-width: 1px ;
-			  border-color: #AAA ;
-			  border-spacing: 0px ; 
-			  border-collapse: collapse ; }
-
-div.grammarTable table * { border-left-width: 0px ;
-			   border-right-width: 0px ;
-			   border-color: #AAA ; } 
-
-div.grammarTable table * tr   { border-top-style: solid ;
-			  border-top-width: 1px ;
-			  border-top-color: #AAA ; } 
-
-.grammar	{ text-align: left ;
-                  vertical-align: top ; }
-.token		{ color: #3f3f5f; }
-table.FAndOTable .token		{ color: #00c; }
-table.FAndOTable .token:visited		{ color: #a0c; }
-.gRuleHead	{ font-style: italic ;
-                  font-family: monospace ; }
-.gRuleBody	{ font-family: monospace ; }
-.gRuleLabel	{ font-family: monospace ; }
-
-.code		{ font-family: monospace; font-size: 100%; }
-pre.code	{ font-family: monospace; font-size: 100%; margin: 0 ; }
-
-/* Table of Contents */
-.toc		{ text-indent: 0; }
-DIV.toc UL UL, DIV.toc OL OL {margin-left: 0}
-DIV.toc UL UL UL, DIV.toc OL OL OL {margin-left: 1em}
-DIV.toc UL UL UL UL, DIV.toc OL OL OL OL {margin-left: 0}
-LI.tocline1	{ font-weight: bold}
-LI.tocline2	{ font-weight: normal}
-LI.tocline4	{ font-style: italic}
-/* The border in the following rule crashes NN4 on fonts.html :-(
-DIV.subtoc	{ padding: 1em; border: solid black thin; margin: 1em 0;
-                  background: #ddd} */
-DIV.toc, UL.index, DT { text-align: left; }
-
-
-/* References to the Rdf Data Model */
-span.rdfDM	{ color: #11d; }
-
-
-/* Truth Table */
-  .truth	{ font-family: monospace; }
-  .error	{ color: #ff1f1f; }
-  table.truthTable td	{ text-align: center; font-family: monospace; }
-  table.truthTable th	{ background-color: #dfdfdf; }
-  table.truthTable tbody th	{ font-weight: normal; font-family: monospace; }
-
-/* Casting table */
-table.casting	{ font-size: x-small; }
-
-.castY	{ background-color: #7FFF7F;
-                  color: black; }
-
-.castN	{ background-color: #FF7F7F;
-                  color: black; }
-
-.castM	{ background-color: white;
-                  color: black; }
-
-span.cancast:hover { background-color: #ffa;
-                     color: black; }
-
-.SPARQLoperator	{ background-color: #FFFFbf; /* yellow */
-          }
-
-.owlnonterminal {
-    font-weight: bold;
-    font-family: sans-serif;
-    font-size: 95%;
-}
-.owlgrammar {
-    margin-top: 1ex;
-    margin-bottom: 1ex;
-    padding-left: 1ex;
-    padding-right: 1ex;
-    padding-top: 1ex;
-    padding-bottom: 0.6ex;
-    border: 1px dashed #2f6fab;
-    font-family: monospace;
-}
-
-      /* ReSpec */
-      dfn { font-style: normal ; }
-      /* ReSpec */
-
-  code           { font-family: monospace; }
-
-  div.constraint,
-  div.issue,
-  div.note,
-  div.notice     { margin-left: 2em; }
-
-  ol.enumar      { list-style-type: decimal; }
-  ol.enumla      { list-style-type: lower-alpha; }
-  ol.enumlr      { list-style-type: lower-roman; }
-  ol.enumua      { list-style-type: upper-alpha; }
-  ol.enumur      { list-style-type: upper-roman; }
-
-
-  div.exampleInner pre { margin-left: 1em;
-                       margin-top: 0em; margin-bottom: 0em}
-  div.exampleOuter {border: 4px double gray;
-                  margin: 0em; padding: 0em}
-  div.exampleInner { background-color: #d5dee3;
-                   border-top-width: 4px;
-                   border-top-style: double;
-                   border-top-color: #d3d3d3;
-                   border-bottom-width: 4px;
-                   border-bottom-style: double;
-                   border-bottom-color: #d3d3d3;
-                   padding: 4px; margin: 0em }
-  div.exampleWrapper { margin: 4px }
-  div.exampleHeader { font-weight: bold;
-                    margin: 4px}
+        dl.terms dd:after {
+            content: '';
+            display: block;
+            clear: both;
+            margin-bottom: 5px;
+        }
     </style>
   </head>
   <body>
@@ -372,6 +115,22 @@ span.cancast:hover { background-color: #ffa;
         </dl>
       </section>
     </section>
+    <section>
+      <h3>Namespaces</h3>
+      <p>This specification makes use of the following namespaces:</p>
+      <dl class="terms" id="namespaces">
+            <dt><code>format</code></dt>
+            <dd><code>http://www.w3.org/ns/formats/</code></dd>
+            <dt><code>owl</code></dt>
+            <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+            <dt><code>rdfs</code></dt>
+            <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+            <dt><code>sd</code></dt>
+            <dd><code>http://www.w3.org/ns/sparql-service-description#</code></dd>
+            <dt><code>sparql</code></dt>
+            <dd><code>http://www.w3.org/ns/sparql#</code></dd>
+      </dl>
+    </section>
     <section id="accessing">
       <h2>Accessing a Service Description</h2>
       <p>SPARQL services made available via the SPARQL Protocol SHOULD return a service description document at the service endpoint when
@@ -390,623 +149,294 @@ span.cancast:hover { background-color: #ffa;
       <section id="properties">
         <h3>Properties</h3>
         <section id="sd-endpoint">
-          <h4>sd:endpoint</h4>
-          <p>Relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a SPARQL endpoint that implements the <a data-cite="SPARQL12-PROTOCOL#terminology">SPARQL
-          Protocol service</a> for the service. The object of the sd:endpoint property is an IRI.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>type:</th>
-                <td><code>owl:InverseFunctionalProperty</code></td>
-              </tr>
-              <tr>
-                <th>domain:</th>
-                <td><a href="#sd-Service"><code>sd:Service</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <h4><code>sd:endpoint</code></h4>
+          <p><code>sd:endpoint</code> is an <code>owl:InverseFunctionalProperty</code> that relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a SPARQL endpoint that implements the <a data-cite="SPARQL12-PROTOCOL#terminology">SPARQL
+          Protocol service</a> for the service. The object of the <code>sd:endpoint</code> property is an IRI.</p>
+          <p>The <code>rdfs:domain</code> of <code>sd:endpoint</code> is <a href="#sd-Service"><code>sd:Service</code></a>.
+          </p>
         </section>
         <section id="sd-feature">
-          <h4>sd:feature</h4>
-          <p>Relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> with a resource representing a supported feature.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>domain:</th>
-                <td><a href="#sd-Service"><code>sd:Service</code></a></td>
-              </tr>
-              <tr>
-                <th>range:</th>
-                <td><a href="#sd-Feature"><code>sd:Feature</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <h4><code><code>sd:feature</code></code></h4>
+          <p><code>sd:feature</code> relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> with a resource representing a supported feature.</p>
+          <p>The <code>rdfs:domain</code> of <code>sd:feature</code> is <a href="#sd-Service"><code>sd:Service</code></a>.
+            The <code>rdfs:range</code> of <code>sd:feature</code> is <a href="#sd-Feature"><code>sd:Feature</code></a>.
+          </p>
         </section>
         <section id="sd-defaultEntailmentRegime">
-          <h4>sd:defaultEntailmentRegime</h4>
-          <p>Relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> with a resource representing an entailment regime used for basic graph pattern matching. This property is
+          <h4><code><code>sd:defaultEntailmentRegime</code></code></h4>
+          <p><code>sd:defaultEntailmentRegime</code> relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> with a resource representing an entailment regime used for basic graph pattern matching. This property is
           intended for use when a single entailment regime by default applies to all graphs in the default dataset of the service. In situations where a different entailment regime applies to a
           specific graph in the dataset, the <a href="#sd-entailmentRegime"><code>sd:entailmentRegime</code></a> property should be used to indicate this fact in the description of that graph.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>subPropertyOf:</th>
-                <td><a href="#sd-feature"><code>sd:feature</code></a></td>
-              </tr>
-              <tr>
-                <th>domain:</th>
-                <td><a href="#sd-Service"><code>sd:Service</code></a></td>
-              </tr>
-              <tr>
-                <th>range:</th>
-                <td><a href="#sd-EntailmentRegime"><code>sd:EntailmentRegime</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <p><code>sd:defaultEntailmentRegime</code> is a <code>rdfs:subPropertyOf</code> of <a href="#sd-feature"><code>sd:feature</code></a>.
+            The <code>rdfs:domain</code> of <code>sd:defaultEntailmentRegime</code> is <a href="#sd-Service"><code>sd:Service</code></a>.
+            The <code>rdfs:range</code> of <code>sd:defaultEntailmentRegime</code> is <a href="#sd-EntailmentRegime"><code>sd:EntailmentRegime</code></a>.
+          </p>
         </section>
         <section id="sd-entailmentRegime">
-          <h4>sd:entailmentRegime</h4>
-          <p>Relates a named graph description with a resource representing an entailment regime used for basic graph pattern matching over that graph.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>domain:</th>
-                <td><a href="#sd-NamedGraph"><code>sd:NamedGraph</code></a></td>
-              </tr>
-              <tr>
-                <th>range:</th>
-                <td><a href="#sd-EntailmentRegime"><code>sd:EntailmentRegime</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <h4><code><code>sd:entailmentRegime</code></code></h4>
+          <p><code>sd:entailmentRegime</code> relates a named graph description with a resource representing an entailment regime used for basic graph pattern matching over that graph.</p>
+          <p>The <code>rdfs:domain</code> of <code>sd:entailmentRegime</code> is <a href="#sd-NamedGraph"><code>sd:NamedGraph</code></a>.
+            The <code>rdfs:range</code> of <code>sd:entailmentRegime</code> is <a href="#sd-EntailmentRegime"><code>sd:EntailmentRegime</code></a>.
+          </p>
         </section>
         <section id="sd-defaultSupportedEntailmentProfile">
-          <h4>sd:defaultSupportedEntailmentProfile</h4>
-          <p>Relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> with a resource representing a supported profile of the default entailment regime (as declared by <a href=
+          <h4><code><code>sd:defaultSupportedEntailmentProfile</code></code></h4>
+          <p><code>sd:defaultSupportedEntailmentProfile</code> relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> with a resource representing a supported profile of the default entailment regime (as declared by <a href=
           "#sd-defaultEntailmentRegime"><code>sd:defaultEntailmentRegime</code></a>). Entailment profiles are discussed more in <a data-cite=
           "SPARQL12-ENTAILMENT#OWL2ProfilesDS">SPARQL 1.2 Entailment Regimes</a> [[SPARQL12-ENTAILMENT]].</p>
           <p>Note that this specification does not make any conformance requirements on the compatibility of an advertised entailment profile with the advertised entailment regime in a service
           description. Providing a reasonable combination of values to the <a href="#sd-entailmentRegime">sd:entailmentRegime</a>/<a href="#sd-defaultEntailmentRegime">sd:defaultEntailmentRegime</a>
           and <a href="#sd-supportedEntailmentProfile">sd:supportedEntailmentProfile</a>/<a href="#sd-defaultSupportedEntailmentProfile">sd:defaultSupportedEntailmentProfile</a> properties is up to
           the creator of a service description.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>subPropertyOf:</th>
-                <td><a href="#sd-feature"><code>sd:feature</code></a></td>
-              </tr>
-              <tr>
-                <th>domain:</th>
-                <td><a href="#sd-Service"><code>sd:Service</code></a></td>
-              </tr>
-              <tr>
-                <th>range:</th>
-                <td><a href="#sd-EntailmentProfile"><code>sd:EntailmentProfile</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <p><code>sd:defaultSupportedEntailmentProfile</code> is a <code>rdfs:subPropertyOf</code> of <a href="#sd-feature"><code>sd:feature</code></a>.
+            The <code>rdfs:domain</code> of <code>sd:defaultSupportedEntailmentProfile</code> is <a href="#sd-Service"><code>sd:Service</code></a>.
+            The <code>rdfs:range</code> of <code>sd:defaultSupportedEntailmentProfile</code> is <a href="#sd-EntailmentProfile"><code>sd:EntailmentProfile</code></a>.
+          </p>
         </section>
         <section id="sd-supportedEntailmentProfile">
-          <h4>sd:supportedEntailmentProfile</h4>
-          <p>Relates a named graph description with a resource representing a supported profile of the entailment regime (as declared by <a href=
+          <h4><code><code>sd:supportedEntailmentProfile</code></code></h4>
+          <p><code>sd:supportedEntailmentProfile</code> relates a named graph description with a resource representing a supported profile of the entailment regime (as declared by <a href=
           "#sd-entailmentRegime"><code>sd:entailmentRegime</code></a>) used for basic graph pattern matching over that graph.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>domain:</th>
-                <td><a href="#sd-NamedGraph"><code>sd:NamedGraph</code></a></td>
-              </tr>
-              <tr>
-                <th>range:</th>
-                <td><a href="#sd-EntailmentProfile"><code>sd:EntailmentProfile</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <p>The <code>rdfs:domain</code> of <code>sd:supportedEntailmentProfile</code> is <a href="#sd-NamedGraph"><code>sd:NamedGraph</code></a>.
+            The <code>rdfs:range</code> of <code>sd:supportedEntailmentProfile</code> is <a href="#sd-EntailmentProfile"><code>sd:EntailmentProfile</code></a>.
+          </p>
         </section>
         <section id="sd-extensionFunction">
-          <h4>sd:extensionFunction</h4>
-          <p>Relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a function that may be used in a SPARQL <a data-cite=
+          <h4><code><code>sd:extensionFunction</code></code></h4>
+          <p><code>sd:extensionFunction</code> relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a function that may be used in a SPARQL <a data-cite=
           "SPARQL12-QUERY#selectExpressions">SELECT expression</a> or a <a data-cite="SPARQL12-QUERY#expressions">FILTER</a>, <a data-cite=
           "SPARQL12-QUERY#having">HAVING</a>, <a data-cite="SPARQL12-QUERY#groupby">GROUP BY</a>, <a data-cite=
           "SPARQL12-QUERY#modOrderBy">ORDER BY</a>, or <a data-cite="SPARQL12-QUERY#bind">BIND</a> clause.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>subPropertyOf:</th>
-                <td><a href="#sd-feature"><code>sd:feature</code></a></td>
-              </tr>
-              <tr>
-                <th>domain:</th>
-                <td><a href="#sd-Service"><code>sd:Service</code></a></td>
-              </tr>
-              <tr>
-                <th>range:</th>
-                <td><a href="#sd-Function"><code>sd:Function</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <p><code>sd:extensionFunction</code> is a <code>rdfs:subPropertyOf</code> of <a href="#sd-feature"><code>sd:feature</code></a>.
+            The <code>rdfs:domain</code> of <code>sd:extensionFunction</code> is <a href="#sd-Service"><code>sd:Service</code></a>.
+            The <code>rdfs:range</code> of <code>sd:extensionFunction</code> is <a href="#sd-Function"><code>sd:Function</code></a>.
+          </p>
         </section>
         <section id="sd-extensionAggregate">
-          <h4>sd:extensionAggregate</h4>
-          <p>Relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to an aggregate that may be used in a SPARQL aggregate query (for instance in a <a data-cite=
+          <h4><code><code>sd:extensionAggregate</code></code></h4>
+          <p><code>sd:extensionAggregate</code> relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to an aggregate that may be used in a SPARQL aggregate query (for instance in a <a data-cite=
           "SPARQL12-QUERY#having">HAVING</a> clause or <a data-cite="SPARQL12-QUERY#selectExpressions">SELECT expression</a>) besides the standard list of
           <a data-cite="SPARQL12-QUERY#aggregates">supported aggregates</a> COUNT, SUM, MIN, MAX, AVG, GROUP_CONCAT, and SAMPLE.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>subPropertyOf:</th>
-                <td><a href="#sd-feature"><code>sd:feature</code></a></td>
-              </tr>
-              <tr>
-                <th>domain:</th>
-                <td><a href="#sd-Service"><code>sd:Service</code></a></td>
-              </tr>
-              <tr>
-                <th>range:</th>
-                <td><a href="#sd-Aggregate"><code>sd:Aggregate</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <p><code>sd:extensionAggregate</code> is a <code>rdfs:subPropertyOf</code> of <a href="#sd-feature"><code>sd:feature</code></a>.
+            The <code>rdfs:domain</code> of <code>sd:extensionAggregate</code> is <a href="#sd-Service"><code>sd:Service</code></a>.
+            The <code>rdfs:range</code> of <code>sd:extensionAggregate</code> is <a href="#sd-Aggregate"><code>sd:Aggregate</code></a>.
+          </p>
         </section>
         <section id="sd-languageExtension">
-          <h4>sd:languageExtension</h4>
-          <p>Relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a resource representing an implemented extension to the SPARQL Query or Update language.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>subPropertyOf:</th>
-                <td><a href="#sd-feature"><code>sd:feature</code></a></td>
-              </tr>
-              <tr>
-                <th>domain:</th>
-                <td><a href="#sd-Service"><code>sd:Service</code></a></td>
-              </tr>
-              <tr>
-                <th>range:</th>
-                <td><a href="#sd-Feature"><code>sd:Feature</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <h4><code><code>sd:languageExtension</code></code></h4>
+          <p><code>sd:languageExtension</code> relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a resource representing an implemented extension to the SPARQL Query or Update language.</p>
+          <p><code>sd:languageExtension</code> is a <code>rdfs:subPropertyOf</code> of <a href="#sd-feature"><code>sd:feature</code></a>.
+            The <code>rdfs:domain</code> of <code>sd:languageExtension</code> is <a href="#sd-Service"><code>sd:Service</code></a>.
+            The <code>rdfs:range</code> of <code>sd:languageExtension</code> is <a href="#sd-Feature"><code>sd:Feature</code></a>.
+          </p>
         </section>
         <section id="sd-supportedLanguage">
-          <h4>sd:supportedLanguage</h4>
-          <p>Relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a SPARQL language (e.g. Query and Update) that it implements.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>subPropertyOf:</th>
-                <td><a href="#sd-feature"><code>sd:feature</code></a></td>
-              </tr>
-              <tr>
-                <th>domain:</th>
-                <td><a href="#sd-Service"><code>sd:Service</code></a></td>
-              </tr>
-              <tr>
-                <th>range:</th>
-                <td><a href="#sd-Language"><code>sd:Language</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <h4><code><code>sd:supportedLanguage</code></code></h4>
+          <p><code>sd:supportedLanguage</code> relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a SPARQL language (e.g. Query and Update) that it implements.</p>
+          <p><code>sd:supportedLanguage</code> is a <code>rdfs:subPropertyOf</code> of <a href="#sd-feature"><code>sd:feature</code></a>.
+            The <code>rdfs:domain</code> of <code>sd:supportedLanguage</code> is <a href="#sd-Service"><code>sd:Service</code></a>.
+            The <code>rdfs:range</code> of <code>sd:supportedLanguage</code> is <a href="#sd-Language"><code>sd:Language</code></a>.
+          </p>
         </section>
         <section id="sd-supportedVersion">
-          <h4>sd:supportedVersion</h4>
-          <p>Relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a SPARQL language version that it supports.</p>
+          <h4><code><code>sd:supportedVersion</code></code></h4>
+          <p><code>sd:supportedVersion</code> relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a SPARQL language version that it supports.</p>
           <p>
               This property is related to the <code>sd:supportedLanguage</code> property, as the combination of language and version will indicate a specific feature set supported by the service.
               For example, when a service description indicates support for the <code>sd:SPARQLQuery</code> language and <a href="http://www.w3.org/ns/sparql#version-1.2-basic"><code>sparql:version-1.2-basic</code></a> version, support for SPARQL 1.2 Query [[SPARQL12-QUERY]] with <a data-cite="RDF12-CONCEPTS#dfn-basic">RDF 1.2 Basic conformance</a> is indicated.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>subPropertyOf:</th>
-                <td><a href="#sd-feature"><code>sd:feature</code></a></td>
-              </tr>
-              <tr>
-                <th>domain:</th>
-                <td><a href="#sd-Service"><code>sd:Service</code></a></td>
-              </tr>
-              <tr>
-                <th>range:</th>
-                <td><code>rdfs:Resource</code></td>
-              </tr>
-            </tbody>
-          </table>
+          <p><code>sd:supportedVersion</code> is a <code>rdfs:subPropertyOf</code> of <a href="#sd-feature"><code>sd:feature</code></a>.
+            The <code>rdfs:domain</code> of <code>sd:supportedVersion</code> is <a href="#sd-Service"><code>sd:Service</code></a>.
+            The <code>rdfs:range</code> of <code>sd:supportedVersion</code> is <code>rdfs:Resource</code>.
+          </p>
         </section>
         <section id="sd-propertyFeature">
-          <h4>sd:propertyFeature</h4>
-          <p>Relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a resource representing an implemented feature that extends the SPARQL Query or Update language and that is
+          <h4><code><code>sd:propertyFeature</code></code></h4>
+          <p><code>sd:propertyFeature</code> relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a resource representing an implemented feature that extends the SPARQL Query or Update language and that is
           accessed by using the named property.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>subPropertyOf:</th>
-                <td><a href="#sd-feature"><code>sd:feature</code></a></td>
-              </tr>
-              <tr>
-                <th>domain:</th>
-                <td><a href="#sd-Service"><code>sd:Service</code></a></td>
-              </tr>
-              <tr>
-                <th>range:</th>
-                <td><a href="#sd-Feature"><code>sd:Feature</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <p><code>sd:propertyFeature</code> is a <code>rdfs:subPropertyOf</code> of <a href="#sd-feature"><code>sd:feature</code></a>.
+            The <code>rdfs:domain</code> of <code>sd:propertyFeature</code> is <a href="#sd-Service"><code>sd:Service</code></a>.
+            The <code>rdfs:range</code> of <code>sd:propertyFeature</code> is <a href="#sd-Feature"><code>sd:Feature</code></a>.
+          </p>
         </section>
         <section id="sd-defaultDataset">
-          <h4>sd:defaultDataset</h4>
-          <p>Relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a description of the default dataset available when no explicit dataset is specified in the query, update
-          request or via protocol parameters.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>type:</th>
-                <td><code>owl:InverseFunctionalProperty</code></td>
-              </tr>
-              <tr>
-                <th>domain:</th>
-                <td><a href="#sd-Service"><code>sd:Service</code></a></td>
-              </tr>
-              <tr>
-                <th>range:</th>
-                <td><a href="#sd-Dataset"><code>sd:Dataset</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <h4><code>sd:defaultDataset</code></h4>
+          <p><code>sd:defaultDataset</code> is an instance of <code>owl:InverseFunctionalProperty</code> that
+          relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a description of the
+          default dataset available when no explicit dataset is specified in the query, update request, or
+          via protocol parameters.</p>
+          <p>The <code>rdfs:domain</code> of <code>sd:defaultDataset</code> is <code>sd:Service</code>.
+            The <code>rdfs:range</code> of <code>sd:defaultDataset</code> is <code>sd:Dataset</code>.</p>
         </section>
         <section id="sd-availableGraphs">
-          <h4>sd:availableGraphs</h4>
-          <p>Relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a description of the graphs which are allowed in the construction of a dataset via the SPARQL Protocol, with
+          <h4><code><code>sd:availableGraphs</code></code></h4>
+          <p><code>sd:availableGraphs</code> relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a description of the graphs which are allowed in the construction of a dataset via the SPARQL Protocol, with
           FROM/FROM NAMED clauses in a query, or with USING/USING NAMED in an update request, if the service limits the scope of dataset construction.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>domain:</th>
-                <td><a href="#sd-Service"><code>sd:Service</code></a></td>
-              </tr>
-              <tr>
-                <th>range:</th>
-                <td><a href="#sd-GraphCollection"><code>sd:GraphCollection</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <p>The <code>rdfs:domain</code> of <code>sd:defaultDataset</code> is <a href="#sd-Service"><code>sd:Service</code></a>.
+            The <code>rdfs:range</code> of <code>sd:defaultDataset</code> is <a href="#sd-GraphCollection"><code>sd:GraphCollection</code></a>.
+          </p>
         </section>
         <section id="sd-resultFormat">
-          <h4>sd:resultFormat</h4>
-          <p>Relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a format that is supported for serializing query results.</p>
+          <h4><code><code>sd:resultFormat</code></code></h4>
+          <p><code>sd:resultFormat</code> relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a format that is supported for serializing query results.</p>
           <p>URIs for commonly used serialization formats are defined by <a class="inform" href="http://www.w3.org/ns/formats/">Unique URIs for File Formats</a>. For formats that do not have an
           existing URI, the <code>&lt;<a href="http://www.w3.org/ns/formats/media_type">http://www.w3.org/ns/formats/media_type</a>&gt;</code> and <code>&lt;<a href=
           "http://www.w3.org/ns/formats/preferred_suffix">http://www.w3.org/ns/formats/preferred_suffix</a>&gt;</code> properties defined in that document SHOULD be used to describe the format.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>domain:</th>
-                <td><a href="#sd-Service"><code>sd:Service</code></a></td>
-              </tr>
-              <tr>
-                <th>range:</th>
-                <td><code>&lt;<a href="http://www.w3.org/ns/formats/Format">http://www.w3.org/ns/formats/Format</a>&gt;</code></td>
-              </tr>
-            </tbody>
-          </table>
+          <p>The <code>rdfs:domain</code> of <code>sd:resultFormat</code> is <a href="#sd-Service"><code>sd:Service</code></a>.
+            The <code>rdfs:range</code> of <code>sd:resultFormat</code> is <code><a href=
+            "http://www.w3.org/ns/formats/Format">format:Format</a></code>.
+          </p>
         </section>
         <section id="sd-inputFormat">
-          <h4>sd:inputFormat</h4>
-          <p>Relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a format that is supported for parsing RDF input; for example, via a SPARQL 1.2 Update <a data-cite=
+          <h4><code><code>sd:inputFormat</code></code></h4>
+          <p><code>sd:inputFormat</code> relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a format that is supported for parsing RDF input; for example, via a SPARQL 1.2 Update <a data-cite=
           "SPARQL12-UPDATE#load">LOAD statement</a>, or when URIs are dereferenced in FROM/FROM NAMED/USING/USING NAMED clauses (see also <a href=
           "#sd-dereferencesuris">sd:DereferencesURIs</a> below).</p>
           <p>URIs for commonly used serialization formats are defined by <a class="inform" href="http://www.w3.org/ns/formats/">Unique URIs for File Formats</a>. For formats that do not have an
           existing URI, the <code>&lt;<a href="http://www.w3.org/ns/formats/media_type">http://www.w3.org/ns/formats/media_type</a>&gt;</code> and <code>&lt;<a href=
           "http://www.w3.org/ns/formats/preferred_suffix">http://www.w3.org/ns/formats/preferred_suffix</a>&gt;</code> properties defined in that document SHOULD be used to describe the format.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>domain:</th>
-                <td><a href="#sd-Service"><code>sd:Service</code></a></td>
-              </tr>
-              <tr>
-                <th>range:</th>
-                <td><code>&lt;<a href="http://www.w3.org/ns/formats/Format">http://www.w3.org/ns/formats/Format</a>&gt;</code></td>
-              </tr>
-            </tbody>
-          </table>
+          <p>The <code>rdfs:domain</code> of <code>sd:inputFormat</code> is <a href="#sd-Service"><code>sd:Service</code></a>.
+            The <code>rdfs:range</code> of <code>sd:inputFormat</code> is <code><a href=
+            "http://www.w3.org/ns/formats/Format">format:Format</a></code>.
+          </p>
         </section>
         <section id="sd-defaultGraph">
-          <h4>sd:defaultGraph</h4>
-          <p>Relates an instance of <a href="#sd-Dataset"><code>sd:Dataset</code></a> to the description of its default graph.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>domain:</th>
-                <td><a href="#sd-Dataset"><code>sd:Dataset</code></a></td>
-              </tr>
-              <tr>
-                <th>range:</th>
-                <td><a href="#sd-Graph"><code>sd:Graph</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <h4><code><code>sd:defaultGraph</code></code></h4>
+          <p><code>sd:defaultGraph</code> relates an instance of <a href="#sd-Dataset"><code>sd:Dataset</code></a> to the description of its default graph.</p>
+          <p>The <code>rdfs:domain</code> of <code>sd:defaultGraph</code> is <a href="#sd-Dataset"><code>sd:Dataset</code></a>.
+            The <code>rdfs:range</code> of <code>sd:defaultGraph</code> is <a href="#sd-Graph"><code>sd:Graph</code></a>.
+          </p>
         </section>
         <section id="sd-namedGraph">
-          <h4>sd:namedGraph</h4>
-          <p>Relates an instance of <a href="#sd-GraphCollection"><code>sd:GraphCollection</code></a> (or its subclass <a href="#sd-Dataset"><code>sd:Dataset</code></a>) to the description of one of
+          <h4><code><code>sd:namedGraph</code></code></h4>
+          <p><code>sd:namedGraph</code> relates an instance of <a href="#sd-GraphCollection"><code>sd:GraphCollection</code></a> (or its subclass <a href="#sd-Dataset"><code>sd:Dataset</code></a>) to the description of one of
           its named graphs. The description of such a named graph MUST include the <a href="#sd-name"><code>sd:name</code></a> property
           and MAY include the <a href="#sd-graph"><code>sd:graph</code></a> property.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>domain:</th>
-                <td><a href="#sd-GraphCollection"><code>sd:GraphCollection</code></a></td>
-              </tr>
-              <tr>
-                <th>range:</th>
-                <td><a href="#sd-NamedGraph"><code>sd:NamedGraph</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <p>The <code>rdfs:domain</code> of <code>sd:namedGraph</code> is <a href="#sd-GraphCollection"><code>sd:GraphCollection</code></a>.
+            The <code>rdfs:range</code> of <code>sd:namedGraph</code> is <a href="#sd-NamedGraph"><code>sd:NamedGraph</code></a>.
+          </p>
         </section>
         <section id="sd-name">
-          <h4>sd:name</h4>
-          <p>Relates a named graph to the name by which it may be referenced in a FROM/FROM NAMED clause. The object of the sd:name property is an IRI.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>domain:</th>
-                <td><a href="#sd-NamedGraph"><code>sd:NamedGraph</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <h4><code><code>sd:name</code></code></h4>
+          <p><code>sd:name</code> relates a named graph to the name by which it may be referenced in a FROM/FROM NAMED clause. The object of the sd:name property is an IRI.</p>
+          <p>The <code>rdfs:domain</code> of <code>sd:name</code> is <a href="#sd-NamedGraph"><code>sd:NamedGraph</code></a>.
+          </p>
         </section>
         <section id="sd-graph">
-          <h4>sd:graph</h4>
-          <p>Relates a named graph to its graph description.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>domain:</th>
-                <td><a href="#sd-NamedGraph"><code>sd:NamedGraph</code></a></td>
-              </tr>
-              <tr>
-                <th>range:</th>
-                <td><a href="#sd-Graph"><code>sd:Graph</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <h4><code><code>sd:graph</code></code></h4>
+          <p><code>sd:graph</code> relates a named graph to its graph description.</p>
+          <p>The <code>rdfs:domain</code> of <code>sd:graph</code> is <a href="#sd-NamedGraph"><code>sd:NamedGraph</code></a>.
+            The <code>rdfs:range</code> of <code>sd:graph</code> is <a href="#sd-Graph"><code>sd:Graph</code></a>.
+          </p>
         </section>
       </section>
       <section id="classes">
         <h3>Classes</h3>
         <section id="sd-Service">
-          <h4>sd:Service</h4>
-          <p>An instance of <a href="#sd-Service"><code>sd:Service</code></a> represents a SPARQL service made available via the SPARQL Protocol.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>type:</th>
-                <td><code>rdfs:Class</code></td>
-              </tr>
-            </tbody>
-          </table>
+          <h4><code>sd:Service</code></h4>
+          <p><code>sd:Service</code> is the <code>rdfs:Class</code> of SPARQL services made available via the SPARQL Protocol.</p>
         </section>
         <section id="sd-Feature">
-          <h4>sd:Feature</h4>
-          <p>An instance of <a href="#sd-Feature"><code>sd:Feature</code></a> represents a feature of a SPARQL service. Specific types of features include <a href="#sd-Function">functions</a>,
+          <h4><code>sd:Feature</code></h4>
+          <p><code>sd:Feature</code> is the <code>rdfs:Class</code> of features of a SPARQL service. Specific types of features include <a href="#sd-Function">functions</a>,
           <a href="#sd-Aggregate">aggregates</a>, <a href="#sd-Language">languages</a>, and entailment <a href="#sd-EntailmentRegime">regimes</a> and <a href="#sd-EntailmentProfile">profiles</a>.
           This document defines five instances of <a href="#sd-Feature"><code>sd:Feature</code></a>: <a href="#sd-dereferencesuris"><code>sd:DereferencesURIs</code></a>, <a href=
           "#sd-uniondefaultgraph"><code>sd:UnionDefaultGraph</code></a>, <a href="#sd-requiresdataset"><code>sd:RequiresDataset</code></a>, <a href="#sd-emptygraphs"><code>sd:EmptyGraphs</code></a>,
           and <a href="#sd-basicfederatedquery"><code>sd:BasicFederatedQuery</code></a>.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>type:</th>
-                <td><code>rdfs:Class</code></td>
-              </tr>
-            </tbody>
-          </table>
         </section>
         <section id="sd-Language">
-          <h4>sd:Language</h4>
-          <p>
-          An instance of <a href="#sd-Language"><code>sd:Language</code></a> represents one of the SPARQL languages (Query or Update).
+          <h4><code>sd:Language</code></h4>
+          <p><code>sd:Language</code> is the <code>rdfs:Class</code> of the SPARQL languages (Query or Update).
           The combination of a <code>sd:Language</code> with a version indicates a specific service configuration providing particular features or extensions.
           </p>
           
           <p class="note">
-          The previous version of this specification [[SPARQL11-SERVICE-DESCRIPTION]] defined <code>sd:Language</code></a> as indicating both a language <em>and a version</em>.
-          This has been changed so that <code>sd:Language</code></a> now only represents languages. A service's supported versions of the language is now specified using the <a href="#sd-supportedVersion"><code>sd:supportedVersion</code></a> property.
+          The previous version of this specification [[SPARQL11-SERVICE-DESCRIPTION]] defined <code>sd:Language</code> as indicating both a language <em>and a version</em>.
+          This has been changed so that <code>sd:Language</code> now only represents languages. A service's supported versions of the language is now specified using the <a href="#sd-supportedVersion"><code>sd:supportedVersion</code></a> property.
           The previously-defined <code>sd:Language</code> <a href="#instances">instances</a> which include a version number are preserved below for backwards compatibility.
           </p>
           
-          This document defines five instances of <a href="#sd-Language"><code>sd:Language</code></a>: <a href="#lang-sparql10query"><code>sd:SPARQL10Query</code></a>, <a href=
+          <p>This document defines five instances of <a href="#sd-Language"><code>sd:Language</code></a>: <a href="#lang-sparql10query"><code>sd:SPARQL10Query</code></a>, <a href=
           "#lang-sparql11query"><code>sd:SPARQL11Query</code></a>, <a href="#lang-sparql11update"><code>sd:SPARQL11Update</code></a>, <a href=
           "#lang-sparqlquery"><code>sd:SPARQLQuery</code></a>, and <a href="#lang-sparqlupdate"><code>sd:SPARQLUpdate</code></a>.</p>
 
-          <table>
-            <tbody>
-              <tr>
-                <th>type:</th>
-                <td><code>rdfs:Class</code></td>
-              </tr>
-              <tr>
-                <th>subClassOf:</th>
-                <td><a href="#sd-Feature"><code>sd:Feature</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <p><code>sd:Language</code> is a <code>rdfs:subClassOf</code> of <a href="#sd-Feature"><code>sd:Feature</code></a>.
+          </p>
         </section>
         <section id="sd-Function">
-          <h4>sd:Function</h4>
-          <p>An instance of <a href="#sd-Function"><code>sd:Function</code></a> represents a function that may be used in a SPARQL <a data-cite=
+          <h4><code>sd:Function</code></h4>
+          <p><code>sd:Function</code> is the <code>rdfs:Class</code> of functions that may be used in a SPARQL <a data-cite=
           "SPARQL12-QUERY#selectExpressions">SELECT expression</a> or a <a data-cite="SPARQL12-QUERY#expressions">FILTER</a>, <a data-cite=
           "SPARQL12-QUERY#having">HAVING</a>, <a data-cite="SPARQL12-QUERY#groupby">GROUP BY</a>, <a data-cite=
           "SPARQL12-QUERY#modOrderBy">ORDER BY</a>, or <a data-cite="SPARQL12-QUERY#bind">BIND</a> clause.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>type:</th>
-                <td><code>rdfs:Class</code></td>
-              </tr>
-              <tr>
-                <th>subClassOf:</th>
-                <td><a href="#sd-Feature"><code>sd:Feature</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <p><code>sd:Function</code> is a <code>rdfs:subClassOf</code> of <a href="#sd-Feature"><code>sd:Feature</code></a>.
+          </p>
         </section>
         <section id="sd-Aggregate">
-          <h4>sd:Aggregate</h4>
-          <p>An instance of <a href="#sd-Aggregate"><code>sd:Aggregate</code></a> represents an aggregate that may be used in a SPARQL aggregate query (for instance in a <a data-cite=
+          <h4><code>sd:Aggregate</code></h4>
+          <p><code>sd:Aggregate</code> is the <code>rdfs:Class</code> aggregates that may be used in a SPARQL aggregate query (for instance in a <a data-cite=
           "SPARQL12-QUERY#having">HAVING</a> clause or <a data-cite="SPARQL12-QUERY#selectExpressions">SELECT expression</a>) besides the standard list of
           <a data-cite="SPARQL12-QUERY#aggregates">supported aggregates</a> COUNT, SUM, MIN, MAX, AVG, GROUP_CONCAT, and SAMPLE.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>type:</th>
-                <td><code>rdfs:Class</code></td>
-              </tr>
-              <tr>
-                <th>subClassOf:</th>
-                <td><a href="#sd-Feature"><code>sd:Feature</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <p><code>sd:Aggregate</code> is a <code>rdfs:subClassOf</code> of <a href="#sd-Feature"><code>sd:Feature</code></a>.
+          </p>
         </section>
         <section id="sd-EntailmentRegime">
-          <h4>sd:EntailmentRegime</h4>
-          <p>An instance of <a href="#sd-EntailmentRegime"><code>sd:EntailmentRegime</code></a> represents an entailment regime used in basic graph pattern matching (as described by <a href=
+          <h4><code>sd:EntailmentRegime</code></h4>
+          <p><code>sd:EntailmentRegime</code> is the <code>rdfs:Class</code> of entailment regimes used in basic graph pattern matching (as described by <a href=
           "http://www.w3.org/TR/sparql11-query/#sparqlBGPExtend">SPARQL 1.2 Query Language</a>). URIs for commonly used entailment regimes are defined by <a class="inform" href=
           "http://www.w3.org/ns/entailment/">Unique URIs for Semantic Web Entailment Regimes</a>.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>type:</th>
-                <td><code>rdfs:Class</code></td>
-              </tr>
-              <tr>
-                <th>subClassOf:</th>
-                <td><a href="#sd-Feature"><code>sd:Feature</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <p><code>sd:EntailmentRegime</code> is a <code>rdfs:subClassOf</code> of <a href="#sd-Feature"><code>sd:Feature</code></a>.
+          </p>
         </section>
         <section id="sd-EntailmentProfile">
-          <h4>sd:EntailmentProfile</h4>
-          <p>An instance of <a href="#sd-EntailmentProfile"><code>sd:EntailmentProfile</code></a> represents a profile of an entailment regime. An entailment profile MAY impose restrictions on what constitutes valid RDF with respect to entailment. URIs for commonly used entailment profiles are defined by <a href=
+          <h4><code>sd:EntailmentProfile</code></h4>
+          <p><code>sd:EntailmentProfile</code> is the <code>rdfs:Class</code> of profiles of an entailment regime. An entailment profile MAY impose restrictions on what constitutes valid RDF with respect to entailment. URIs for commonly used entailment profiles are defined by <a href=
           "http://www.w3.org/ns/owl-profile/">Unique URIs for OWL 2 Profiles</a>.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>type:</th>
-                <td><code>rdfs:Class</code></td>
-              </tr>
-              <tr>
-                <th>subClassOf:</th>
-                <td><a href="#sd-Feature"><code>sd:Feature</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <p><code>sd:EntailmentProfile</code> is a <code>rdfs:subClassOf</code> of <a href="#sd-Feature"><code>sd:Feature</code></a>.
+          </p>
         </section>
         <section id="sd-GraphCollection">
-          <h4>sd:GraphCollection</h4>
-          <p>An instance of <a href="#sd-GraphCollection"><code>sd:GraphCollection</code></a> represents a collection of zero or more named graph descriptions. Each named graph description belonging
-          to an <a href="#sd-GraphCollection"><code>sd:GraphCollection</code></a> MUST be linked with the <a href=
-          "#sd-namedGraph"><code>sd:namedGraph</code></a> predicate.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>type:</th>
-                <td><code>rdfs:Class</code></td>
-              </tr>
-            </tbody>
-          </table>
+          <h4><code>sd:GraphCollection</code></h4>
+          <p><code>sd:GraphCollection</code> is the <code>rdfs:Class</code> of collections of zero or more named graph descriptions. Each named graph description belonging
+          to an <a href="#sd-GraphCollection"><code>sd:GraphCollection</code></a> MUST be linked with the <a href="#sd-namedGraph"><code>sd:namedGraph</code></a> predicate.</p>
         </section>
         <section id="sd-Dataset">
-          <h4>sd:Dataset</h4>
-          <p>An instance of <a href="#sd-Dataset"><code>sd:Dataset</code></a> represents a <a data-cite="SPARQL12-QUERY#rdfDataset">RDF Dataset</a> comprised of a default graph and
+          <h4><code>sd:Dataset</code></h4>
+          <p><code>sd:Dataset</code> is the <code>rdfs:Class</code> of <a data-cite="SPARQL12-QUERY#rdfDataset">RDF Datasets</a>, comprised of a default graph and
           zero or more named graphs.</p>
           <p>The default graph of an <a href="#sd-Dataset"><code>sd:Dataset</code></a> MUST be linked with the <a href=
           "#sd-defaultGraph"><code>sd:defaultGraph</code></a> predicate.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>type:</th>
-                <td><code>rdfs:Class</code></td>
-              </tr>
-              <tr>
-                <th>subClassOf:</th>
-                <td><a href="#sd-GraphCollection"><code>sd:GraphCollection</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <p><code>sd:Dataset</code> is a <code>rdfs:subClassOf</code> of <a href="#sd-GraphCollection"><code>sd:GraphCollection</code></a>.
+          </p>
         </section>
         <section id="sd-Graph">
-          <h4>sd:Graph</h4>
-          <p>An instance of <a href="#sd-Graph"><code>sd:Graph</code></a> represents the description of an RDF graph.</p>
+          <h4><code>sd:Graph</code></h4>
+          <p><code>sd:Graph</code> is the <code>rdfs:Class</code> of RDF graphs.</p>
           <p>This document does not define properties with domain <a href="#sd-Graph"><code>sd:Graph</code></a>. Instead, such instances may be described using other appropriate vocabularies (see
           <a href="#example">example below</a>).</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>type:</th>
-                <td><code>rdfs:Class</code></td>
-              </tr>
-            </tbody>
-          </table>
         </section>
         <section id="sd-NamedGraph">
-          <h4>sd:NamedGraph</h4>
-          <p>An instance of <a href="#sd-NamedGraph"><code>sd:NamedGraph</code></a> represents a named graph having a name (via <a href="#sd-name"><code>sd:name</code></a>) and an optional graph
+          <h4><code>sd:NamedGraph</code></h4>
+          <p><code>sd:NamedGraph</code> is the <code>rdfs:Class</code> of graphs having a name in a <code>sd:Dataset</code> (via <a href="#sd-name"><code>sd:name</code></a>) and an optional graph
           description (via <a href="#sd-graph"><code>sd:graph</code></a>).</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>type:</th>
-                <td><code>rdfs:Class</code></td>
-              </tr>
-            </tbody>
-          </table>
         </section>
       </section>
       <section id="instances">
         <h3>Instances</h3>
         <section id="lang-sparql10query">
-          <h4>sd:SPARQL10Query</h4>
-          <p><code>sd:SPARQL10Query</code> is an <a href="#sd-Language"><code>sd:Language</code></a> representing the <a data-cite="SPARQL-QUERY#">SPARQL 1.0 Query Language</a>.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>type:</th>
-                <td><a href="#sd-Language"><code>sd:Language</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <h4><code>sd:SPARQL10Query</code></h4>
+          <p><code>sd:SPARQL10Query</code> is a <a href="#sd-Language"><code>sd:Language</code></a> representing the <a data-cite="SPARQL-QUERY#">SPARQL 1.0 Query Language</a>.</p>
         </section>
         <section id="lang-sparql11query">
-          <h4>sd:SPARQL11Query</h4>
-          <p><code>sd:SPARQL11Query</code> is an <a href="#sd-Language"><code>sd:Language</code></a> representing the [[[SPARQL11-QUERY]]].</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>type:</th>
-                <td><a href="#sd-Language"><code>sd:Language</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <h4><code>sd:SPARQL11Query</code></h4>
+          <p><code>sd:SPARQL11Query</code> is a <a href="#sd-Language"><code>sd:Language</code></a> representing the [[[SPARQL11-QUERY]]].</p>
         </section>
         <section id="lang-sparql11update">
-          <h4>sd:SPARQL11Update</h4>
-          <p><code>sd:SPARQL11Update</code> is an <a href="#sd-Language"><code>sd:Language</code></a> representing the [[[SPARQL11-UPDATE]]] language.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>type:</th>
-                <td><a href="#sd-Language"><code>sd:Language</code></a></td>
-              </tr>
-            </tbody>
-          </table>
+          <h4><code>sd:SPARQL11Update</code></h4>
+          <p><code>sd:SPARQL11Update</code> is a <a href="#sd-Language"><code>sd:Language</code></a> representing the [[[SPARQL11-UPDATE]]] language.</p>
         </section>
         <section id="lang-sparqlquery">
-          <h4>sd:SPARQLQuery</h4>
-          <p><code>sd:SPARQLQuery</code> is an <a href="#sd-Language"><code>sd:Language</code></a> representing the SPARQL Query language [[[SPARQL12-QUERY]]].</p>
+          <h4><code>sd:SPARQLQuery</code></h4>
+          <p><code>sd:SPARQLQuery</code> is a <a href="#sd-Language"><code>sd:Language</code></a> representing the SPARQL Query language [[SPARQL12-QUERY]].</p>
           <p>Relevant <a href="#sd-supportedVersion">supported versions</a> are:</p>
           <ul>
             <li><code>sparql:version-1.2</code></li>
@@ -1014,18 +444,10 @@ span.cancast:hover { background-color: #ffa;
             <li><code>sparql:version-1.1</code></li>
             <li><code>sparql:version-1.0</code></li>
           </ul>
-          <table>
-            <tbody>
-              <tr>
-                <th>type:</th>
-                <td><a href="#sd-Language"><code>sd:Language</code></a></td>
-              </tr>
-            </tbody>
-          </table>
         </section>
         <section id="lang-sparqlupdate">
-          <h4>sd:SPARQLUpdate</h4>
-          <p><code>sd:SPARQLUpdate</code> is an <a href="#sd-Language"><code>sd:Language</code></a> representing the SPARQL Update langauge [[[SPARQL12-UPDATE]]] language.</p>
+          <h4><code>sd:SPARQLUpdate</code></h4>
+          <p><code>sd:SPARQLUpdate</code> is a <a href="#sd-Language"><code>sd:Language</code></a> representing the SPARQL Update langauge [[SPARQL12-UPDATE]].</p>
           <p>Relevant <a href="#sd-supportedVersion">supported versions</a> are:</p>
           <ul>
             <li><code>sparql:version-1.2</code></li>
@@ -1033,83 +455,35 @@ span.cancast:hover { background-color: #ffa;
             <li><code>sparql:version-1.1</code></li>
             <li><code>sparql:version-1.0</code></li>
           </ul>
-          <table>
-            <tbody>
-              <tr>
-                <th>type:</th>
-                <td><a href="#sd-Language"><code>sd:Language</code></a></td>
-              </tr>
-            </tbody>
-          </table>
         </section>
         <section id="sd-dereferencesuris">
-          <h4>sd:DereferencesURIs</h4>
-          <p><code>sd:DereferencesURIs</code>, when used as the object of the <a href="#sd-feature">sd:feature</a> property, indicates that a SPARQL service will <a data-cite=
+          <h4><code>sd:DereferencesURIs</code></h4>
+          <p><code>sd:DereferencesURIs</code> is a <a href="#sd-Feature"><code>sd:Feature</code></a> which, when used as the object of the <a href="#sd-feature">sd:feature</a> property, indicates that a SPARQL service will <a data-cite=
           "WEBARCH#uri-dereference">dereference</a> [[WEBARCH]] URIs used in <a data-cite="SPARQL12-QUERY#specifyingDataset">FROM/FROM NAMED</a>
           and <a data-cite="SPARQL12-UPDATE#defUSING">USING/USING NAMED</a> clauses and use the resulting RDF in the dataset during query evaluation.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>type:</th>
-                <td><a href="#sd-Feature"><code>sd:Feature</code></a></td>
-              </tr>
-            </tbody>
-          </table>
         </section>
         <section id="sd-uniondefaultgraph">
-          <h4>sd:UnionDefaultGraph</h4>
-          <p><code>sd:UnionDefaultGraph</code>, when used as the object of the <a href="#sd-feature">sd:feature</a> property, indicates that the default graph of the dataset used during query and
+          <h4><code>sd:UnionDefaultGraph</code></h4>
+          <p><code>sd:UnionDefaultGraph</code> is a <a href="#sd-Feature"><code>sd:Feature</code></a> which, when used as the object of the <a href="#sd-feature">sd:feature</a> property, indicates that the default graph of the dataset used during query and
           update evaluation (when an explicit dataset is not specified) is comprised of the union of all the named graphs in that dataset.</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>type:</th>
-                <td><a href="#sd-Feature"><code>sd:Feature</code></a></td>
-              </tr>
-            </tbody>
-          </table>
         </section>
         <section id="sd-requiresdataset">
-          <h4>sd:RequiresDataset</h4>
-          <p><code>sd:RequiresDataset</code>, when used as the object of the <a href="#sd-feature">sd:feature</a> property, indicates that the SPARQL service requires an explicit dataset declaration
+          <h4><code>sd:RequiresDataset</code></h4>
+          <p><code>sd:RequiresDataset</code> is a <a href="#sd-Feature"><code>sd:Feature</code></a> which, when used as the object of the <a href="#sd-feature">sd:feature</a> property, indicates that the SPARQL service requires an explicit dataset declaration
           (based on either <a data-cite="SPARQL12-QUERY#specifyingDataset">FROM/FROM NAMED</a> clauses in a query, <a data-cite=
           "SPARQL12-UPDATE#defUSING">USING/USING NAMED</a> clauses in an update, or the <a data-cite="SPARQL12-PROTOCOL#dataset">appropriate SPARQL Protocol
           parameters</a>).</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>type:</th>
-                <td><a href="#sd-Feature"><code>sd:Feature</code></a></td>
-              </tr>
-            </tbody>
-          </table>
         </section>
         <section id="sd-emptygraphs">
-          <h4>sd:EmptyGraphs</h4>
-          <p><code>sd:EmptyGraphs</code>, when used as the object of the <a href="#sd-feature">sd:feature</a> property, indicates that the underlying graph store supports empty graphs. A graph store
+          <h4><code>sd:EmptyGraphs</code></h4>
+          <p><code>sd:EmptyGraphs</code> is a <a href="#sd-Feature"><code>sd:Feature</code></a> which, when used as the object of the <a href="#sd-feature">sd:feature</a> property, indicates that the underlying graph store supports empty graphs. A graph store
           that supports empty graphs MUST NOT remove graphs that are left empty after triples are removed from them. (See <a data-cite=
           "SPARQL12-UPDATE#graphUpdate">3.1 Graph Update in SPARQL 1.2 Update</a>.)</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>type:</th>
-                <td><a href="#sd-Feature"><code>sd:Feature</code></a></td>
-              </tr>
-            </tbody>
-          </table>
         </section>
         <section id="sd-basicfederatedquery">
-          <h4>sd:BasicFederatedQuery</h4>
-          <p><code>sd:BasicFederatedQuery</code>, when used as the object of the <a href="#sd-feature">sd:feature</a> property, indicates that the SPARQL service supports basic federated query using
+          <h4><code>sd:BasicFederatedQuery</code></h4>
+          <p><code>sd:BasicFederatedQuery</code> is a <a href="#sd-Feature"><code>sd:Feature</code></a> which, when used as the object of the <a href="#sd-feature">sd:feature</a> property, indicates that the SPARQL service supports basic federated query using
           the <a data-cite="SPARQL12-FEDERATED-QUERY#service">SERVICE keyword</a> as defined by [[[SPARQL12-FEDERATED-QUERY]]].</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>type:</th>
-                <td><a href="#sd-Feature"><code>sd:Feature</code></a></td>
-              </tr>
-            </tbody>
-          </table>
         </section>
         <section id="other-instances">
           <h4>Other Instances</h4>
@@ -1123,8 +497,8 @@ span.cancast:hover { background-color: #ffa;
             "#sd-EntailmentProfile"><code>sd:EntailmentProfile</code></a> usable with the properties <a href=
             "#sd-defaultSupportedEntailmentProfile"><code>sd:defaultSupportedEntailmentProfile</code></a> and <a href=
             "#sd-supportedEntailmentProfile"><code>sd:supportedEntailmentProfile</code></a>)</li>
-            <li><a href="http://www.w3.org/ns/formats/">Unique URIs for File Formats</a> (members of the class <code>&lt;<a href=
-            "http://www.w3.org/ns/formats/Format">http://www.w3.org/ns/formats/Format</a>&gt;</code> usable with the properties <a href="#sd-resultFormat"><code>sd:resultFormat</code></a> and
+            <li><a href="http://www.w3.org/ns/formats/">Unique URIs for File Formats</a> (members of the class <code><a href=
+            "http://www.w3.org/ns/formats/Format">format:Format</a></code> usable with the properties <a href="#sd-resultFormat"><code>sd:resultFormat</code></a> and
             <a href="#sd-inputFormat"><code>sd:inputFormat</code></a>)</li>
           </ul>
         </section>
