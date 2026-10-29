@@ -115,10 +115,9 @@
         </dl>
       </section>
     </section>
-    <section id="namespaces">
+    <section>
       <h3>Namespaces</h3>
       <p>This specification makes use of the following namespaces:</p>
-
       <dl class="terms" id="namespaces">
             <dt><code>format</code></dt>
             <dd><code>http://www.w3.org/ns/formats/</code></dd>
@@ -130,9 +129,9 @@
             <dd><code>http://www.w3.org/ns/sparql-service-description#</code></dd>
             <dt><code>sparql</code></dt>
             <dd><code>http://www.w3.org/ns/sparql#</code></dd>
-        </dl>
+      </dl>
     </section>
-  <section id="accessing">
+    <section id="accessing">
       <h2>Accessing a Service Description</h2>
       <p>SPARQL services made available via the SPARQL Protocol SHOULD return a service description document at the service endpoint when
       dereferenced using the HTTP GET operation without any query parameter strings provided. This service description MUST be made
@@ -265,8 +264,8 @@
           relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a description of the
           default dataset available when no explicit dataset is specified in the query, update request, or
           via protocol parameters.</p>
-          <p>The <code>rdfs:domain</code> of <code>sd:defaultDataset</code> is <code>sd:Service</code></a>.
-            The <code>rdfs:range</code> of <code>sd:defaultDataset</code> is <code>sd:Dataset</code></a>.</p>
+          <p>The <code>rdfs:domain</code> of <code>sd:defaultDataset</code> is <code>sd:Service</code>.
+            The <code>rdfs:range</code> of <code>sd:defaultDataset</code> is <code>sd:Dataset</code>.</p>
         </section>
         <section id="sd-availableGraphs">
           <h4><code><code>sd:availableGraphs</code></code></h4>
@@ -351,12 +350,12 @@
           </p>
           
           <p class="note">
-          The previous version of this specification [[SPARQL11-SERVICE-DESCRIPTION]] defined <code>sd:Language</code></a> as indicating both a language <em>and a version</em>.
-          This has been changed so that <code>sd:Language</code></a> now only represents languages. A service's supported versions of the language is now specified using the <a href="#sd-supportedVersion"><code>sd:supportedVersion</code></a> property.
+          The previous version of this specification [[SPARQL11-SERVICE-DESCRIPTION]] defined <code>sd:Language</code> as indicating both a language <em>and a version</em>.
+          This has been changed so that <code>sd:Language</code> now only represents languages. A service's supported versions of the language is now specified using the <a href="#sd-supportedVersion"><code>sd:supportedVersion</code></a> property.
           The previously-defined <code>sd:Language</code> <a href="#instances">instances</a> which include a version number are preserved below for backwards compatibility.
           </p>
           
-          This document defines five instances of <a href="#sd-Language"><code>sd:Language</code></a>: <a href="#lang-sparql10query"><code>sd:SPARQL10Query</code></a>, <a href=
+          <p>This document defines five instances of <a href="#sd-Language"><code>sd:Language</code></a>: <a href="#lang-sparql10query"><code>sd:SPARQL10Query</code></a>, <a href=
           "#lang-sparql11query"><code>sd:SPARQL11Query</code></a>, <a href="#lang-sparql11update"><code>sd:SPARQL11Update</code></a>, <a href=
           "#lang-sparqlquery"><code>sd:SPARQLQuery</code></a>, and <a href="#lang-sparqlupdate"><code>sd:SPARQLUpdate</code></a>.</p>
 
