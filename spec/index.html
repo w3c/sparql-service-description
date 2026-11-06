@@ -107,10 +107,10 @@
         </p>
         <p>The following terms are also in use throughout this document:</p>
         <dl>
-          <dt>SPARQL Service</dt>
+          <dt><dfn data-lt="sparql-service">SPARQL Service</dfn></dt>
           <dd>Any implementation conforming to the [[[SPARQL12-PROTOCOL]]] (this document's use of "SPARQL Service" is the same as "<a data-cite=
           "SPARQL12-PROTOCOL#terminology">SPARQL Protocol service</a>" as defined in the SPARQL 1.2 Protocol) [[SPARQL12-PROTOCOL]].</dd>
-          <dt>SPARQL endpoint</dt>
+          <dt><dfn data-lt="sparql-endpoint">SPARQL endpoint</dfn></dt>
           <dd>The URI at which a SPARQL Service listens for requests from clients.</dd>
         </dl>
       </section>
@@ -135,7 +135,7 @@
       <h2>Accessing a Service Description</h2>
       <p>SPARQL services made available via the SPARQL Protocol SHOULD return a service description document at the service endpoint when
       dereferenced using the HTTP GET operation without any query parameter strings provided. This service description MUST be made
-      available in an RDF serialization, MAY be embedded in (X)HTML by way of [[[RDFa-core]]], and SHOULD use <a data-cite="rfc9110#content.negotiation">content negotiation</a> if available in other RDF representations.</p>
+      available in an RDF serialization, MAY be embedded in (X)HTML by way of [[[RDFa-core]]], and SHOULD use [[[RFC9110#content.negotiation|content negotiation]]] if available in other RDF representations.</p>
     </section>
     <section id="vocab">
       <h2>Service Description Vocabulary</h2>
