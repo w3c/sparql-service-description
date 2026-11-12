@@ -644,12 +644,21 @@ PREFIX sparql: &lt;http://www.w3.org/ns/sparql#&gt;
 <!-- BODY -->
     <section id="privacy">
       <h2>Privacy Considerations</h2>
-      <p>TODO</p>
+      <p>By its nature, a service description exposes details of the service being described.
+        Through the use of terms defined in this document (or in conjunction with terms defined elsewhere),
+        a service description may reveal details of the service's software, configuration, extensions, and dataset.
+        These details may be useful to consumers of the service description, but they also risk exposing information
+        that could reveal data meant to be private. Care must be taken by system implementors and those
+        responsible for configuring SPARQL services in deciding what and how much data to include in a service description.</p>
     </section>
-
     <section id="security">
       <h2>Security Considerations</h2>
-      <p>TODO</p>
+      <p>
+        The data revealed in a service description may risk exposing information
+        that could be used to exploit software vulnerabilities, or pursue other unintended outcomes.
+        As described in <a href="#privacy" class="sectionRef"></a>, care must be taken in deciding what and how much data to include in a service description.</p>
+      <p>Some aspects of a service description may be computed on-the-fly (for example, a dataset description which includes a list of all named graphs and their corresponding sizes).
+        This may cause additional use of CPU resources along with associated secondary issues such as denial of service.</p>
     </section>
 
     <section id="internationalization">
