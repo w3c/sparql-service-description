@@ -506,7 +506,7 @@
       <h2>Example (Informative)</h2>
       <p>The following HTTP traces illustrate the retrieval of a service description from the SPARQL endpoint <code>http://www.example/sparql/</code>.</p>
       <p>This RDF describes a SPARQL service available at the URL <code>http://www.example/sparql/</code> that supports the SPARQL 1.2 Query language. The service will dereference URLs used in
-      FROM/FROM NAMED clauses, supports both the RDF/XML and Turtle serialization formats, supports the <code>http://example.org/Distance</code> extension function, and has a dataset with a default
+      FROM/FROM NAMED clauses, supports the SPARQL Results XML, RDF/XML, and Turtle serialization formats, supports the <code>http://example.org/Distance</code> extension function, and has a dataset with a default
       graph and one named graph, both described using the VoID vocabulary [[?VOID]]. The default graph contains 100 triples and supports RDFS entailment while the graph named
       http://www.example/named-graph contains 2000 triples and supports OWL2 RL entailment.</p>
       <section id="example-rdfxml">
@@ -533,6 +533,7 @@ Content-Type: application/rdf+xml
     &lt;sd:supportedLanguage rdf:resource="http://www.w3.org/ns/sparql-service-description#SPARQLQuery"/&gt;
     &lt;sd:supportedVersion rdf:resource="http://www.w3.org/ns/sparql#version-1.2"/&gt;
     &lt;sd:supportedVersion rdf:resource="http://www.w3.org/ns/sparql#version-1.2-basic"/&gt;
+    &lt;sd:resultFormat rdf:resource="http://www.w3.org/ns/formats/SPARQL_Results_XML"/&gt;
     &lt;sd:resultFormat rdf:resource="http://www.w3.org/ns/formats/RDF_XML"/&gt;
     &lt;sd:resultFormat rdf:resource="http://www.w3.org/ns/formats/Turtle"/&gt;
     &lt;sd:feature rdf:resource="http://www.w3.org/ns/sparql-service-description#DereferencesURIs"/&gt;
@@ -589,7 +590,7 @@ PREFIX sparql: &lt;http://www.w3.org/ns/sparql#&gt;
     sd:endpoint &lt;http://www.example/sparql/&gt; ;
     sd:supportedLanguage sd:SPARQLQuery ;
     sd:supportedVersion sparql:version-1.2, sparql:version-1.2-basic ;
-    sd:resultFormat &lt;http://www.w3.org/ns/formats/RDF_XML&gt;, &lt;http://www.w3.org/ns/formats/Turtle&gt; ;
+    sd:resultFormat &lt;http://www.w3.org/ns/formats/SPARQL_Results_XML&gt;, &lt;http://www.w3.org/ns/formats/RDF_XML&gt;, &lt;http://www.w3.org/ns/formats/Turtle&gt; ;
     sd:extensionFunction &lt;http://example.org/Distance&gt; ;
     sd:feature sd:DereferencesURIs ;
     sd:defaultEntailmentRegime ent:RDFS ;
