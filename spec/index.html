@@ -620,11 +620,13 @@ PREFIX sparql: &lt;http://www.w3.org/ns/sparql#&gt;
       <p>A SPARQL service conformant with this specification:</p>
       <ol>
         <li>MUST return RDF content when the service endpoint URL is accessed as described in <a href="#accessing" class="sectionRef"></a>.</li>
-        <li>The RDF content returned from dereferencing a service endpoint URL <code>&lt;service-endpoint-URL&gt;</code> MUST include at
-        least one triple matching:
+      </ol>
+      <p>The RDF content returned from dereferencing a service endpoint URL <code>&lt;service-endpoint-URL&gt;</code>:</p>
+      <ol>
+        <li>MUST include at least one triple matching:
           <pre class="box">?service sd:endpoint &lt;service-endpoint-URL&gt; .</pre>
         </li>
-        <li>The RDF content returned MUST make use of the vocabulary defined in this document in accordance with the usage specified in
+        <li>MUST make use of the vocabulary defined in this document in accordance with the usage specified in
         section <a href="#vocab" class="sectionRef"></a>.</li>
       </ol>
     </section>
