@@ -585,12 +585,13 @@ PREFIX ent: &lt;http://www.w3.org/ns/entailment/&gt;
 PREFIX prof: &lt;http://www.w3.org/ns/owl-profile/&gt;
 PREFIX void: &lt;http://rdfs.org/ns/void#&gt;
 PREFIX sparql: &lt;http://www.w3.org/ns/sparql#&gt;
+PREFIX format: &lt;http://www.w3.org/ns/formats/&gt;
 
 [] a sd:Service ;
     sd:endpoint &lt;http://www.example/sparql/&gt; ;
     sd:supportedLanguage sd:SPARQLQuery ;
     sd:supportedVersion sparql:version-1.2, sparql:version-1.2-basic ;
-    sd:resultFormat &lt;http://www.w3.org/ns/formats/SPARQL_Results_XML&gt;, &lt;http://www.w3.org/ns/formats/RDF_XML&gt;, &lt;http://www.w3.org/ns/formats/Turtle&gt; ;
+    sd:resultFormat format:SPARQL_Results_XML, format:RDF_XML, format:Turtle ;
     sd:extensionFunction &lt;http://example.org/Distance&gt; ;
     sd:feature sd:DereferencesURIs ;
     sd:defaultEntailmentRegime ent:RDFS ;
