@@ -98,7 +98,7 @@
 <!-- BODY -->
     <section id="intro">
       <h2>Introduction</h2>
-      <p>A SPARQL service description lists the features of a SPARQL service made available via the [[[SPARQL12-QUERY]]]. This document describes both a method for discovering a service description from a specific SPARQL service and an RDF schema for encoding such descriptions in RDF.</p>
+      <p>A SPARQL service description lists the features of a SPARQL service made available via the [[[SPARQL12-PROTOCOL]]]. This document describes both a method for discovering a service description from a specific SPARQL service and an RDF schema for encoding such descriptions in RDF.</p>
       <section id="terminology">
         <h3>Terminology</h3>
         <p>When this document uses the words MUST, MUST NOT, SHOULD, SHOULD NOT,
@@ -115,10 +115,10 @@
         </dl>
       </section>
     </section>
-    <section>
-      <h3>Namespaces</h3>
+    <section id="namespaces">
+      <h2>Namespaces</h2>
       <p>This specification makes use of the following namespaces:</p>
-      <dl class="terms" id="namespaces">
+      <dl class="terms">
             <dt><code>format</code></dt>
             <dd><code>http://www.w3.org/ns/formats/</code></dd>
             <dt><code>owl</code></dt>
@@ -135,7 +135,7 @@
       <h2>Accessing a Service Description</h2>
       <p>SPARQL services made available via the SPARQL Protocol SHOULD return a service description document at the service endpoint when
       dereferenced using the HTTP GET operation without any query parameter strings provided. This service description MUST be made
-      available in an RDF serialization, MAY be embedded in (X)HTML by way of [[[RDFa-core]]], and SHOULD use [[[RFC9110#content.negotiation|content negotiation]]] if available in other RDF representations.</p>
+      available in an RDF serialization, MAY be embedded in (X)HTML by way of [[[RDFa-core]]], and SHOULD be made available using [[[RFC9110#content.negotiation|content negotiation]]] if available in other RDF representations.</p>
     </section>
     <section id="vocab">
       <h2>Service Description Vocabulary</h2>
@@ -156,14 +156,14 @@
           </p>
         </section>
         <section id="sd-feature">
-          <h4><code><code>sd:feature</code></code></h4>
+          <h4><code>sd:feature</code></h4>
           <p><code>sd:feature</code> relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> with a resource representing a supported feature.</p>
           <p>The <code>rdfs:domain</code> of <code>sd:feature</code> is <a href="#sd-Service"><code>sd:Service</code></a>.
             The <code>rdfs:range</code> of <code>sd:feature</code> is <a href="#sd-Feature"><code>sd:Feature</code></a>.
           </p>
         </section>
         <section id="sd-defaultEntailmentRegime">
-          <h4><code><code>sd:defaultEntailmentRegime</code></code></h4>
+          <h4><code>sd:defaultEntailmentRegime</code></h4>
           <p><code>sd:defaultEntailmentRegime</code> relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> with a resource representing an entailment regime used for basic graph pattern matching. This property is
           intended for use when a single entailment regime by default applies to all graphs in the default dataset of the service. In situations where a different entailment regime applies to a
           specific graph in the dataset, the <a href="#sd-entailmentRegime"><code>sd:entailmentRegime</code></a> property should be used to indicate this fact in the description of that graph.</p>
@@ -173,14 +173,14 @@
           </p>
         </section>
         <section id="sd-entailmentRegime">
-          <h4><code><code>sd:entailmentRegime</code></code></h4>
+          <h4><code>sd:entailmentRegime</code></h4>
           <p><code>sd:entailmentRegime</code> relates a named graph description with a resource representing an entailment regime used for basic graph pattern matching over that graph.</p>
           <p>The <code>rdfs:domain</code> of <code>sd:entailmentRegime</code> is <a href="#sd-NamedGraph"><code>sd:NamedGraph</code></a>.
             The <code>rdfs:range</code> of <code>sd:entailmentRegime</code> is <a href="#sd-EntailmentRegime"><code>sd:EntailmentRegime</code></a>.
           </p>
         </section>
         <section id="sd-defaultSupportedEntailmentProfile">
-          <h4><code><code>sd:defaultSupportedEntailmentProfile</code></code></h4>
+          <h4><code>sd:defaultSupportedEntailmentProfile</code></h4>
           <p><code>sd:defaultSupportedEntailmentProfile</code> relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> with a resource representing a supported profile of the default entailment regime (as declared by <a href=
           "#sd-defaultEntailmentRegime"><code>sd:defaultEntailmentRegime</code></a>). Entailment profiles are discussed more in <a data-cite=
           "SPARQL12-ENTAILMENT#OWL2ProfilesDS">SPARQL 1.2 Entailment Regimes</a> [[SPARQL12-ENTAILMENT]].</p>
@@ -194,7 +194,7 @@
           </p>
         </section>
         <section id="sd-supportedEntailmentProfile">
-          <h4><code><code>sd:supportedEntailmentProfile</code></code></h4>
+          <h4><code>sd:supportedEntailmentProfile</code></h4>
           <p><code>sd:supportedEntailmentProfile</code> relates a named graph description with a resource representing a supported profile of the entailment regime (as declared by <a href=
           "#sd-entailmentRegime"><code>sd:entailmentRegime</code></a>) used for basic graph pattern matching over that graph.</p>
           <p>The <code>rdfs:domain</code> of <code>sd:supportedEntailmentProfile</code> is <a href="#sd-NamedGraph"><code>sd:NamedGraph</code></a>.
@@ -202,7 +202,7 @@
           </p>
         </section>
         <section id="sd-extensionFunction">
-          <h4><code><code>sd:extensionFunction</code></code></h4>
+          <h4><code>sd:extensionFunction</code></h4>
           <p><code>sd:extensionFunction</code> relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a function that may be used in a SPARQL <a data-cite=
           "SPARQL12-QUERY#selectExpressions">SELECT expression</a> or a <a data-cite="SPARQL12-QUERY#expressions">FILTER</a>, <a data-cite=
           "SPARQL12-QUERY#having">HAVING</a>, <a data-cite="SPARQL12-QUERY#groupby">GROUP BY</a>, <a data-cite=
@@ -213,7 +213,7 @@
           </p>
         </section>
         <section id="sd-extensionAggregate">
-          <h4><code><code>sd:extensionAggregate</code></code></h4>
+          <h4><code>sd:extensionAggregate</code></h4>
           <p><code>sd:extensionAggregate</code> relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to an aggregate that may be used in a SPARQL aggregate query (for instance in a <a data-cite=
           "SPARQL12-QUERY#having">HAVING</a> clause or <a data-cite="SPARQL12-QUERY#selectExpressions">SELECT expression</a>) besides the standard list of
           <a data-cite="SPARQL12-QUERY#aggregates">supported aggregates</a> COUNT, SUM, MIN, MAX, AVG, GROUP_CONCAT, and SAMPLE.</p>
@@ -223,7 +223,7 @@
           </p>
         </section>
         <section id="sd-languageExtension">
-          <h4><code><code>sd:languageExtension</code></code></h4>
+          <h4><code>sd:languageExtension</code></h4>
           <p><code>sd:languageExtension</code> relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a resource representing an implemented extension to the SPARQL Query or Update language.</p>
           <p><code>sd:languageExtension</code> is a <code>rdfs:subPropertyOf</code> of <a href="#sd-feature"><code>sd:feature</code></a>.
             The <code>rdfs:domain</code> of <code>sd:languageExtension</code> is <a href="#sd-Service"><code>sd:Service</code></a>.
@@ -231,7 +231,7 @@
           </p>
         </section>
         <section id="sd-supportedLanguage">
-          <h4><code><code>sd:supportedLanguage</code></code></h4>
+          <h4><code>sd:supportedLanguage</code></h4>
           <p><code>sd:supportedLanguage</code> relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a SPARQL language (e.g. Query and Update) that it implements.</p>
           <p><code>sd:supportedLanguage</code> is a <code>rdfs:subPropertyOf</code> of <a href="#sd-feature"><code>sd:feature</code></a>.
             The <code>rdfs:domain</code> of <code>sd:supportedLanguage</code> is <a href="#sd-Service"><code>sd:Service</code></a>.
@@ -239,18 +239,17 @@
           </p>
         </section>
         <section id="sd-supportedVersion">
-          <h4><code><code>sd:supportedVersion</code></code></h4>
+          <h4><code>sd:supportedVersion</code></h4>
           <p><code>sd:supportedVersion</code> relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a SPARQL language version that it supports.</p>
           <p>
               This property is related to the <code>sd:supportedLanguage</code> property, as the combination of language and version will indicate a specific feature set supported by the service.
               For example, when a service description indicates support for the <code>sd:SPARQLQuery</code> language and <a href="http://www.w3.org/ns/sparql#version-1.2-basic"><code>sparql:version-1.2-basic</code></a> version, support for SPARQL 1.2 Query [[SPARQL12-QUERY]] with <a data-cite="RDF12-CONCEPTS#dfn-basic">RDF 1.2 Basic conformance</a> is indicated.</p>
           <p><code>sd:supportedVersion</code> is a <code>rdfs:subPropertyOf</code> of <a href="#sd-feature"><code>sd:feature</code></a>.
             The <code>rdfs:domain</code> of <code>sd:supportedVersion</code> is <a href="#sd-Service"><code>sd:Service</code></a>.
-            The <code>rdfs:range</code> of <code>sd:supportedVersion</code> is <code>rdfs:Resource</code>.
           </p>
         </section>
         <section id="sd-propertyFeature">
-          <h4><code><code>sd:propertyFeature</code></code></h4>
+          <h4><code>sd:propertyFeature</code></h4>
           <p><code>sd:propertyFeature</code> relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a resource representing an implemented feature that extends the SPARQL Query or Update language and that is
           accessed by using the named property.</p>
           <p><code>sd:propertyFeature</code> is a <code>rdfs:subPropertyOf</code> of <a href="#sd-feature"><code>sd:feature</code></a>.
@@ -260,23 +259,23 @@
         </section>
         <section id="sd-defaultDataset">
           <h4><code>sd:defaultDataset</code></h4>
-          <p><code>sd:defaultDataset</code> is an instance of <code>owl:InverseFunctionalProperty</code> that
+          <p><code>sd:defaultDataset</code> is an <code>owl:InverseFunctionalProperty</code> that
           relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a description of the
           default dataset available when no explicit dataset is specified in the query, update request, or
           via protocol parameters.</p>
-          <p>The <code>rdfs:domain</code> of <code>sd:defaultDataset</code> is <code>sd:Service</code>.
-            The <code>rdfs:range</code> of <code>sd:defaultDataset</code> is <code>sd:Dataset</code>.</p>
+          <p>The <code>rdfs:domain</code> of <code>sd:defaultDataset</code> is <a href="#sd-Service"><code>sd:Service</code></a>.
+            The <code>rdfs:range</code> of <code>sd:defaultDataset</code> is <a href="#sd-Dataset"><code>sd:Dataset</code></a>.</p>
         </section>
         <section id="sd-availableGraphs">
-          <h4><code><code>sd:availableGraphs</code></code></h4>
+          <h4><code>sd:availableGraphs</code></h4>
           <p><code>sd:availableGraphs</code> relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a description of the graphs which are allowed in the construction of a dataset via the SPARQL Protocol, with
           FROM/FROM NAMED clauses in a query, or with USING/USING NAMED in an update request, if the service limits the scope of dataset construction.</p>
-          <p>The <code>rdfs:domain</code> of <code>sd:defaultDataset</code> is <a href="#sd-Service"><code>sd:Service</code></a>.
-            The <code>rdfs:range</code> of <code>sd:defaultDataset</code> is <a href="#sd-GraphCollection"><code>sd:GraphCollection</code></a>.
+          <p>The <code>rdfs:domain</code> of <code>sd:availableGraphs</code> is <a href="#sd-Service"><code>sd:Service</code></a>.
+            The <code>rdfs:range</code> of <code>sd:availableGraphs</code> is <a href="#sd-GraphCollection"><code>sd:GraphCollection</code></a>.
           </p>
         </section>
         <section id="sd-resultFormat">
-          <h4><code><code>sd:resultFormat</code></code></h4>
+          <h4><code>sd:resultFormat</code></h4>
           <p><code>sd:resultFormat</code> relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a format that is supported for serializing query results.</p>
           <p>URIs for commonly used serialization formats are defined by <a class="inform" href="http://www.w3.org/ns/formats/">Unique URIs for File Formats</a>. For formats that do not have an
           existing URI, the <code>&lt;<a href="http://www.w3.org/ns/formats/media_type">http://www.w3.org/ns/formats/media_type</a>&gt;</code> and <code>&lt;<a href=
@@ -287,7 +286,7 @@
           </p>
         </section>
         <section id="sd-inputFormat">
-          <h4><code><code>sd:inputFormat</code></code></h4>
+          <h4><code>sd:inputFormat</code></h4>
           <p><code>sd:inputFormat</code> relates an instance of <a href="#sd-Service"><code>sd:Service</code></a> to a format that is supported for parsing RDF input; for example, via a SPARQL 1.2 Update <a data-cite=
           "SPARQL12-UPDATE#load">LOAD statement</a>, or when URIs are dereferenced in FROM/FROM NAMED/USING/USING NAMED clauses (see also <a href=
           "#sd-dereferencesuris">sd:DereferencesURIs</a> below).</p>
@@ -300,14 +299,14 @@
           </p>
         </section>
         <section id="sd-defaultGraph">
-          <h4><code><code>sd:defaultGraph</code></code></h4>
+          <h4><code>sd:defaultGraph</code></h4>
           <p><code>sd:defaultGraph</code> relates an instance of <a href="#sd-Dataset"><code>sd:Dataset</code></a> to the description of its default graph.</p>
           <p>The <code>rdfs:domain</code> of <code>sd:defaultGraph</code> is <a href="#sd-Dataset"><code>sd:Dataset</code></a>.
             The <code>rdfs:range</code> of <code>sd:defaultGraph</code> is <a href="#sd-Graph"><code>sd:Graph</code></a>.
           </p>
         </section>
         <section id="sd-namedGraph">
-          <h4><code><code>sd:namedGraph</code></code></h4>
+          <h4><code>sd:namedGraph</code></h4>
           <p><code>sd:namedGraph</code> relates an instance of <a href="#sd-GraphCollection"><code>sd:GraphCollection</code></a> (or its subclass <a href="#sd-Dataset"><code>sd:Dataset</code></a>) to the description of one of
           its named graphs. The description of such a named graph MUST include the <a href="#sd-name"><code>sd:name</code></a> property
           and MAY include the <a href="#sd-graph"><code>sd:graph</code></a> property.</p>
@@ -316,13 +315,13 @@
           </p>
         </section>
         <section id="sd-name">
-          <h4><code><code>sd:name</code></code></h4>
-          <p><code>sd:name</code> relates a named graph to the name by which it may be referenced in a FROM/FROM NAMED clause. The object of the sd:name property is an IRI.</p>
+          <h4><code>sd:name</code></h4>
+          <p><code>sd:name</code> relates a named graph to the name by which it may be referenced in a FROM/FROM NAMED clause. The object of the <code>sd:name</code> property is an IRI.</p>
           <p>The <code>rdfs:domain</code> of <code>sd:name</code> is <a href="#sd-NamedGraph"><code>sd:NamedGraph</code></a>.
           </p>
         </section>
         <section id="sd-graph">
-          <h4><code><code>sd:graph</code></code></h4>
+          <h4><code>sd:graph</code></h4>
           <p><code>sd:graph</code> relates a named graph to its graph description.</p>
           <p>The <code>rdfs:domain</code> of <code>sd:graph</code> is <a href="#sd-NamedGraph"><code>sd:NamedGraph</code></a>.
             The <code>rdfs:range</code> of <code>sd:graph</code> is <a href="#sd-Graph"><code>sd:Graph</code></a>.
@@ -341,7 +340,7 @@
           <a href="#sd-Aggregate">aggregates</a>, <a href="#sd-Language">languages</a>, and entailment <a href="#sd-EntailmentRegime">regimes</a> and <a href="#sd-EntailmentProfile">profiles</a>.
           This document defines five instances of <a href="#sd-Feature"><code>sd:Feature</code></a>: <a href="#sd-dereferencesuris"><code>sd:DereferencesURIs</code></a>, <a href=
           "#sd-uniondefaultgraph"><code>sd:UnionDefaultGraph</code></a>, <a href="#sd-requiresdataset"><code>sd:RequiresDataset</code></a>, <a href="#sd-emptygraphs"><code>sd:EmptyGraphs</code></a>,
-          and <a href="#sd-basicfederatedquery"><code>sd:BasicFederatedQuery</code></a>.</p>
+          and <a href="#sd-basicfederatedquery"><code>sd:BasicFederatedQuery</code></a> (as well as several <a href="#sd-Language"><code>sd:Language</code></a>s which are sd:Feature instances via subclassing).</p>
         </section>
         <section id="sd-Language">
           <h4><code>sd:Language</code></h4>
@@ -381,8 +380,8 @@
         </section>
         <section id="sd-EntailmentRegime">
           <h4><code>sd:EntailmentRegime</code></h4>
-          <p><code>sd:EntailmentRegime</code> is the <code>rdfs:Class</code> of entailment regimes used in basic graph pattern matching (as described by <a href=
-          "http://www.w3.org/TR/sparql11-query/#sparqlBGPExtend">SPARQL 1.2 Query Language</a>). URIs for commonly used entailment regimes are defined by <a class="inform" href=
+          <p><code>sd:EntailmentRegime</code> is the <code>rdfs:Class</code> of entailment regimes used in basic graph pattern matching (as described in [[[SPARQL-QUERY#sparqlBGPExtend]]]).
+          URIs for commonly used entailment regimes are defined by <a class="inform" href=
           "http://www.w3.org/ns/entailment/">Unique URIs for Semantic Web Entailment Regimes</a>.</p>
           <p><code>sd:EntailmentRegime</code> is a <code>rdfs:subClassOf</code> of <a href="#sd-Feature"><code>sd:Feature</code></a>.
           </p>
@@ -416,7 +415,7 @@
         </section>
         <section id="sd-NamedGraph">
           <h4><code>sd:NamedGraph</code></h4>
-          <p><code>sd:NamedGraph</code> is the <code>rdfs:Class</code> of graphs having a name in a <code>sd:Dataset</code> (via <a href="#sd-name"><code>sd:name</code></a>) and an optional graph
+          <p><code>sd:NamedGraph</code> is the <code>rdfs:Class</code> of graphs having a name in a <code>sd:Dataset</code> or <code>sd:GraphCollection</code> (via <a href="#sd-name"><code>sd:name</code></a>) and an optional graph
           description (via <a href="#sd-graph"><code>sd:graph</code></a>).</p>
         </section>
       </section>
@@ -436,7 +435,7 @@
         </section>
         <section id="lang-sparqlquery">
           <h4><code>sd:SPARQLQuery</code></h4>
-          <p><code>sd:SPARQLQuery</code> is a <a href="#sd-Language"><code>sd:Language</code></a> representing the SPARQL Query language [[SPARQL12-QUERY]].</p>
+          <p><code>sd:SPARQLQuery</code> is a <a href="#sd-Language"><code>sd:Language</code></a> representing the [[[SPARQL12-QUERY]]].</p>
           <p>Relevant <a href="#sd-supportedVersion">supported versions</a> are:</p>
           <ul>
             <li><code>sparql:version-1.2</code></li>
@@ -447,13 +446,12 @@
         </section>
         <section id="lang-sparqlupdate">
           <h4><code>sd:SPARQLUpdate</code></h4>
-          <p><code>sd:SPARQLUpdate</code> is a <a href="#sd-Language"><code>sd:Language</code></a> representing the SPARQL Update langauge [[SPARQL12-UPDATE]].</p>
+          <p><code>sd:SPARQLUpdate</code> is a <a href="#sd-Language"><code>sd:Language</code></a> representing the [[[SPARQL12-UPDATE]]] language.</p>
           <p>Relevant <a href="#sd-supportedVersion">supported versions</a> are:</p>
           <ul>
             <li><code>sparql:version-1.2</code></li>
             <li><code>sparql:version-1.2-basic</code></li>
             <li><code>sparql:version-1.1</code></li>
-            <li><code>sparql:version-1.0</code></li>
           </ul>
         </section>
         <section id="sd-dereferencesuris">
@@ -508,8 +506,8 @@
       <h2>Example (Informative)</h2>
       <p>The following HTTP traces illustrate the retrieval of a service description from the SPARQL endpoint <code>http://www.example/sparql/</code>.</p>
       <p>This RDF describes a SPARQL service available at the URL <code>http://www.example/sparql/</code> that supports the SPARQL 1.2 Query language. The service will dereference URLs used in
-      FROM/FROM NAMED clauses, supports both the RDF/XML and Turtle serialization formats, supports the <code>http://example.org/Distance</code> extension function, and has a dataset with a default
-      graph and one named graph, both described using the voiD vocabulary [[VOID]]. The default graph contains 100 triples and supports RDFS entailment while the graph named
+      FROM/FROM NAMED clauses, supports the SPARQL Results XML, RDF/XML, and Turtle serialization formats, supports the <code>http://example.org/Distance</code> extension function, and has a dataset with a default
+      graph and one named graph, both described using the VoID vocabulary [[?VOID]]. The default graph contains 100 triples and supports RDFS entailment while the graph named
       http://www.example/named-graph contains 2000 triples and supports OWL2 RL entailment.</p>
       <section id="example-rdfxml">
         <h3>RDF/XML Service Description</h3>
@@ -535,6 +533,7 @@ Content-Type: application/rdf+xml
     &lt;sd:supportedLanguage rdf:resource="http://www.w3.org/ns/sparql-service-description#SPARQLQuery"/&gt;
     &lt;sd:supportedVersion rdf:resource="http://www.w3.org/ns/sparql#version-1.2"/&gt;
     &lt;sd:supportedVersion rdf:resource="http://www.w3.org/ns/sparql#version-1.2-basic"/&gt;
+    &lt;sd:resultFormat rdf:resource="http://www.w3.org/ns/formats/SPARQL_Results_XML"/&gt;
     &lt;sd:resultFormat rdf:resource="http://www.w3.org/ns/formats/RDF_XML"/&gt;
     &lt;sd:resultFormat rdf:resource="http://www.w3.org/ns/formats/Turtle"/&gt;
     &lt;sd:feature rdf:resource="http://www.w3.org/ns/sparql-service-description#DereferencesURIs"/&gt;
@@ -586,12 +585,13 @@ PREFIX ent: &lt;http://www.w3.org/ns/entailment/&gt;
 PREFIX prof: &lt;http://www.w3.org/ns/owl-profile/&gt;
 PREFIX void: &lt;http://rdfs.org/ns/void#&gt;
 PREFIX sparql: &lt;http://www.w3.org/ns/sparql#&gt;
+PREFIX format: &lt;http://www.w3.org/ns/formats/&gt;
 
 [] a sd:Service ;
     sd:endpoint &lt;http://www.example/sparql/&gt; ;
     sd:supportedLanguage sd:SPARQLQuery ;
     sd:supportedVersion sparql:version-1.2, sparql:version-1.2-basic ;
-    sd:resultFormat &lt;http://www.w3.org/ns/formats/RDF_XML&gt;, &lt;http://www.w3.org/ns/formats/Turtle&gt; ;
+    sd:resultFormat format:SPARQL_Results_XML, format:RDF_XML, format:Turtle ;
     sd:extensionFunction &lt;http://example.org/Distance&gt; ;
     sd:feature sd:DereferencesURIs ;
     sd:defaultEntailmentRegime ent:RDFS ;
@@ -621,14 +621,15 @@ PREFIX sparql: &lt;http://www.w3.org/ns/sparql#&gt;
       <h2>Conformance</h2>
       <p>A SPARQL service conformant with this specification:</p>
       <ol>
-        <li>MUST return RDF content when the service endpoint URL is accessed as described in section <a href="#accessing">2 Accessing a
-        Service Description</a>.</li>
-        <li>The RDF content returned from dereferencing a service endpoint URL <code>&lt;service-endpoint-URL&gt;</code> MUST include at
-        least one triple matching:
+        <li>MUST return RDF content when the service endpoint URL is accessed as described in <a href="#accessing" class="sectionRef"></a>.</li>
+      </ol>
+      <p>The RDF content returned from dereferencing a service endpoint URL <code>&lt;service-endpoint-URL&gt;</code>:</p>
+      <ol>
+        <li>MUST include at least one triple matching:
           <pre class="box">?service sd:endpoint &lt;service-endpoint-URL&gt; .</pre>
         </li>
-        <li>The RDF content returned MUST make use of the vocabulary defined in this document in accordance with the usage specified in
-        section <a href="#vocab">3 Service Description Vocabulary</a>.</li>
+        <li>MUST make use of the vocabulary defined in this document in accordance with the usage specified in
+        section <a href="#vocab" class="sectionRef"></a>.</li>
       </ol>
     </section>
     
